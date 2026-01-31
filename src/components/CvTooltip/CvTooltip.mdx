@@ -1,0 +1,91 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as TooltipStories from './CvTooltip.stories';
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/tooltip)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/tooltip/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/tooltip/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Alignment](#alignment)
+- [Duration](#duration)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+Tooltips display additional information upon hover or focus. The information should be contextual, useful, and nonessential.
+
+<Canvas of={TooltipStories.Default} />
+
+## Alignment
+
+You can specify the alignment of the tooltip relative to its trigger element.
+
+<Canvas of={TooltipStories.Alignment} />
+
+## Duration
+
+You can control the enter and leave delays for the tooltip.
+
+<Canvas of={TooltipStories.Duration} />
+
+## Component API
+
+<ArgTypes of={TooltipStories} />
+
+### Tooltip `align`
+
+Specify how the trigger should align with the tooltip. Options include:
+- `top`, `top-start`, `top-end`
+- `bottom`, `bottom-start`, `bottom-end`
+- `left`, `left-start`, `left-end`
+- `right`, `right-start`, `right-end`
+
+```vue
+<CvTooltip align="bottom-start">
+  <button>Trigger</button>
+  <template #content>
+    <cds-tooltip-content>Tooltip content</cds-tooltip-content>
+  </template>
+</CvTooltip>
+```
+
+### Tooltip `enterDelay` and `leaveDelay`
+
+Control the delay in milliseconds before showing or hiding the tooltip.
+
+```vue
+<CvTooltip :enter-delay="0" :leave-delay="300">
+  <button>Trigger</button>
+  <template #content>
+    <cds-tooltip-content>Tooltip content</cds-tooltip-content>
+  </template>
+</CvTooltip>
+```
+
+### Tooltip Content
+
+Use the `content` slot to provide the tooltip content. The content should be wrapped in a `cds-tooltip-content` element.
+
+```vue
+<CvTooltip>
+  <button>Trigger element</button>
+  <template #content>
+    <cds-tooltip-content>Your tooltip text here</cds-tooltip-content>
+  </template>
+</CvTooltip>
+```
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/tooltip/tooltip.mdx).

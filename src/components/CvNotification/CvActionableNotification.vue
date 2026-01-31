@@ -36,9 +36,9 @@ const emit = defineEmits<{
     :low-contrast="lowContrast || undefined"
     :inline="inline || undefined"
     :status-icon-description="statusIconDescription"
-    @cds-notification-closed="emit('close', $event)"
     @cds-notification-action-clicked="emit('action', $event)"
   >
+    <slot name="action" />
     <slot />
   </cds-actionable-notification>
 </template>

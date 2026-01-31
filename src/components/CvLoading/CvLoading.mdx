@@ -1,0 +1,39 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as LoadingStories from './CvLoading.stories';
+
+<Meta of={LoadingStories} />
+
+# Loading
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/loading)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/loading/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/loading/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+Loading spinners are used when retrieving data or performing slow computations. They notify to the user that their request is being processed.
+
+<Canvas of={LoadingStories.Default} />
+
+Use the **Controls** panel to toggle between variants:
+- **small**: Toggle to see the small loading spinner
+- **overlay**: Toggle to add an overlay background
+- **inactive**: Toggle to stop the spinner animation
+
+## Component API
+
+<ArgTypes of={LoadingStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/loading/loading.mdx).

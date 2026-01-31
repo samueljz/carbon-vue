@@ -1,0 +1,102 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as CheckboxStories from './CvCheckbox.stories';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/checkbox)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/checkbox/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/checkbox/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Horizontal](#horizontal)
+- [Single](#single)
+- [Skeleton state](#skeleton-state)
+- [Component API](#component-api)
+  - [Checkbox `checked`](#checkbox-checked)
+  - [Checkbox `label-text`](#checkbox-label-text)
+  - [Checkbox `v-model`](#checkbox-v-model)
+- [Feedback](#feedback)
+
+## Overview
+
+You can build a checkbox using the `CvCheckbox` component in combination with a
+`CvCheckboxGroup` component to group controls and `legend-text` prop for
+the label.
+
+<Canvas of={CheckboxStories.Default} />
+
+## Horizontal
+
+<Canvas of={CheckboxStories.Horizontal} />
+
+## Single
+
+<Canvas of={CheckboxStories.Single} />
+
+## Skeleton state
+
+You can use the `CvCheckboxSkeleton` component to render a skeleton variant
+of a checkbox. This is useful to display while content in your checkbox is being
+fetched from an external resource like an API.
+
+<Canvas of={CheckboxStories.Skeleton} />
+
+## Component API
+
+<ArgTypes of={CheckboxStories} />
+
+### Checkbox `checked`
+
+You can use the `checked` prop to specify whether a checkbox is checked by
+default or not on page load.
+
+```vue
+<CvCheckbox :checked="true">Checkbox label</CvCheckbox>
+```
+
+### Checkbox `label-text`
+
+The `label-text` prop should be used to provide a label that describes the
+checkbox input that is being exposed to the user. Alternatively, you can use
+the default slot to provide the label content.
+
+```vue
+<CvCheckbox label-text="Checkbox label" />
+<!-- OR -->
+<CvCheckbox>Checkbox label</CvCheckbox>
+```
+
+### Checkbox `v-model`
+
+You can use Vue's `v-model` directive to create two-way data binding with the
+checkbox's checked state.
+
+```vue
+<template>
+  <CvCheckbox v-model="isChecked">Checkbox label</CvCheckbox>
+  <p>Checked: {{ isChecked }}</p>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+const isChecked = ref(false);
+</script>
+```
+
+The component also emits a `change` event when the checkbox state changes:
+
+```vue
+<CvCheckbox @change="handleChange">Checkbox label</CvCheckbox>
+```
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/checkbox/checkbox.mdx).

@@ -4,12 +4,20 @@
 
 Create a **Vue 3 component library** (`carbon-vue`) that wraps `@carbon/web-components` (Carbon Design System 11), achieving feature parity with the existing `carbon-components-vue` library (Carbon 10).
 
+Also create story book that replicates all existing documentations from @carbon/web-components but with the new vue wrapper components.
+
 ### Key Goals
 - Wrap Carbon web components as Vue 3 components with `Cv` prefix
 - Ensure proper Vue integration (v-model, events, props)
 - Match Storybook stories and MDX documentation with `@carbon/web-components`
 - Maintain consistent property binding patterns
 
+### Rules and Responsibilities
+- Implement the new wrapper components
+- Ensure proper Vue integrations
+- Exact Storybook stories and MDX documentations with `@carbon/web-components` (You SHOULD reference and modify a copy for the new story book)
+- Ensure all controls are working by testing it on the browser
+    - You can start the story books in both carbon-vue using `npm run storybook` and `@carbon/web-components` by going to `carbon/package/web-components` folder and run `yarn storybook`
 ---
 
 ## Project Structure
@@ -36,14 +44,14 @@ carbon-migration/
 |-----------|---------|---------|-----|--------|
 | Accordion | ✅ | ✅ | ✅ | Complete |
 | Button | ✅ | ✅ | ✅ | Complete |
-| Checkbox | ✅ | ✅ | ⬜ | Partial |
-| Link | ✅ | ✅ | ⬜ | Partial |
-| Loading | ✅ | ✅ | ⬜ | Partial |
+| Checkbox | ✅ | ⬜ | ⬜ | Partial |
+| Link | ✅ | ⬜ | ⬜ | Partial |
+| Loading | ✅ | ⬜ | ⬜ | Partial |
 | Tag | ✅ | ✅ | ✅ | Complete |
 | Text Input | ✅ | ✅ | ✅ | Complete |
 | Toggle | ✅ | ✅ | ✅ | Complete |
-| Tooltip | ✅ | ✅ | ⬜ | Partial |
-| Notification | ✅ | ✅ | ⬜ | Partial |
+| Tooltip | ✅ | ⬜ | ⬜ | Partial |
+| Notification | ✅ | ⬜ | ⬜ | Partial |
 
 ---
 
