@@ -2,37 +2,202 @@
 
 ## Project Objective
 
-Create a **Vue 3 component library** (`carbon-vue`) that wraps `@carbon/web-components` (Carbon Design System 11), achieving feature parity with the existing `carbon-components-vue` library (Carbon 10).
-
-Also create story book that replicates all existing documentations from @carbon/web-components but with the new vue wrapper components.
+Create a **Vue 3 component library** (`carbon-vue`) that wraps `@carbon/web-components` (Carbon Design System 11), achieving feature parity with `carbon-components-vue` (Carbon 10).
 
 ### Key Goals
 - Wrap Carbon web components as Vue 3 components with `Cv` prefix
 - Ensure proper Vue integration (v-model, events, props)
-- Match Storybook stories and MDX documentation with `@carbon/web-components`
-- Maintain consistent property binding patterns
+- Match Storybook stories and MDX documentation exactly with `@carbon/web-components`
 
-### Rules and Responsibilities
-- Implement the new wrapper components
-- Ensure proper Vue integrations
-- Exact Storybook stories and MDX documentations with `@carbon/web-components` (You SHOULD reference and modify a copy for the new story book)
-- Ensure all controls are working by testing it on the browser
-    - You can start the story books in both carbon-vue using `npm run storybook` and `@carbon/web-components` by going to `carbon/package/web-components` folder and run `yarn storybook`
 ---
 
-## Project Structure
+## Quick Reference Paths
 
+| Resource | Path |
+|----------|------|
+| **Reference components** | `carbon/packages/web-components/src/components/{component}/` |
+| **Reference stories** | `carbon/packages/web-components/src/components/{component}/{component}.stories.ts` |
+| **Reference MDX** | `carbon/packages/web-components/src/components/{component}/{component}.mdx` |
+| **Vue components** | `carbon-vue/src/components/Cv{Component}/` |
+| **Vue stories** | `carbon-vue/src/components/Cv{Component}/Cv{Component}.stories.ts` |
+| **Vue MDX** | `carbon-vue/src/components/Cv{Component}/Cv{Component}.mdx` |
+| **Storybook config** | `carbon-vue/.storybook/` |
+
+---
+
+## Component Implementation Workflow
+
+For each component, follow these steps in order:
+
+### Step 1: Research the Reference
+```bash
+# View the web component source to understand props
+cat carbon/packages/web-components/src/components/{component}/{component}.ts
+
+# View reference stories
+cat carbon/packages/web-components/src/components/{component}/{component}.stories.ts
+
+# View reference MDX
+cat carbon/packages/web-components/src/components/{component}/{component}.mdx
 ```
-carbon-migration/
-├── carbon/                    # @carbon/web-components source (reference)
-│   └── packages/web-components/src/components/
-└── carbon-vue/                # Vue 3 wrapper library
-    ├── src/components/        # Vue component wrappers
-    ├── .storybook/            # Storybook configuration
-    │   ├── templates/         # Story templates (with-layer.ts)
-    │   └── preview.ts
-    └── package.json
+
+### Step 2: Create Vue Component Wrapper
+
+**File:** `carbon-vue/src/components/Cv{Component}/Cv{Component}.vue`
+
+```vue
+<script setup lang="ts">
+import '@carbon/web-components/es/components/{component}/index.js';
+
+export interface Cv{Component}Props {
+  // Copy props from web component @property() decorators
+  propName?: string;
+}
+
+withDefaults(defineProps<Cv{Component}Props>(), {
+  // Set defaults matching web component
+});
+
+const emit = defineEmits<{
+  eventName: [event: CustomEvent];
+}>();
+</script>
+
+<template>
+  <cds-{component}
+    :prop-name="propName"
+    @cds-{component}-event="emit('eventName', $event)"
+  >
+    <slot />
+  </cds-{component}>
+</template>
 ```
+
+### Step 3: Create Stories File
+
+**File:** `carbon-vue/src/components/Cv{Component}/Cv{Component}.stories.ts`
+
+```typescript
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
+import { Cv{Component} } from './index';
+
+// Copy args from reference stories
+const args = {
+  // Match reference defaultArgs exactly
+};
+
+// Copy argTypes from reference stories  
+const argTypes: ArgTypes = {
+  propName: {
+    control: 'boolean', // or 'text', 'select', 'radio'
+    description: 'Copy description from reference',
+  },
+};
+
+const meta: Meta<typeof Cv{Component}> = {
+  title: 'Components/{Component}',
+  component: Cv{Component},
+};
+
+export default meta;
+type Story = StoryObj<typeof Cv{Component}>;
+
+// Copy story structure from reference
+export const Default: Story = {
+  args,
+  argTypes,
+  render: (args) => ({
+    components: { Cv{Component} },
+    setup() { return { args }; },
+    template: '<Cv{Component} v-bind="args" />',
+  }),
+};
+```
+
+### Step 4: Create MDX Documentation
+
+**File:** `carbon-vue/src/components/Cv{Component}/Cv{Component}.mdx`
+
+```mdx
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as {Component}Stories from './Cv{Component}.stories';
+
+<Meta of={{Component}Stories} />
+
+# {Component}
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/{component})
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/{component}/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/{component}/accessibility)
+
+## Overview
+
+{Copy overview text from reference MDX}
+
+<Canvas of={{Component}Stories.Default} />
+
+## Component API
+
+<ArgTypes of={{Component}Stories} />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).
+```
+
+### Step 5: Export Component
+
+**File:** `carbon-vue/src/components/Cv{Component}/index.ts`
+
+```typescript
+export { default as Cv{Component} } from './Cv{Component}.vue';
+```
+
+### Step 6: Verify
+
+```bash
+# Build storybook to check for errors
+cd carbon-vue && npm run storybook:build
+
+# Run storybook to verify visually
+npm run storybook  # http://localhost:7007
+```
+
+---
+
+## Property Binding Rules
+
+> [!IMPORTANT]
+> Check the web component source file for `@property()` decorators.
+
+| Decorator Pattern | Vue Binding |
+|------------------|-------------|
+| `@property()` with NO `attribute:` | Use **camelCase**: `:isExpressive` |
+| `@property({ attribute: 'kebab-name' })` | Use **kebab-case**: `:kebab-name` |
+
+**Known camelCase properties:**
+- `isExpressive`, `isSelected`, `isFlush`, `hideLabel`, `readonly`
+
+**Known kebab-case properties:**
+- `hide-close-button`, `low-contrast`, `helper-text`, `invalid-text`, `label-text`
+
+---
+
+## Story & MDX Verification Checklist
+
+> [!IMPORTANT]
+> Complete ALL checks before marking a component as done.
+
+- [ ] **Args match** - Compare `args` object with reference `defaultArgs`
+- [ ] **ArgTypes match** - All controls present with same types (boolean, text, select, radio)
+- [ ] **Story names match** - Same stories in same order (Default, Playground, etc.)
+- [ ] **Default values match** - e.g., `kind="error"` not `kind="info"`
+- [ ] **MDX sections match** - Overview, variants, Component API, Feedback
+- [ ] **Props work** - Test each control in Storybook UI
+- [ ] **Build passes** - `npm run storybook:build` succeeds
 
 ---
 
@@ -44,30 +209,30 @@ carbon-migration/
 |-----------|---------|---------|-----|--------|
 | Accordion | ✅ | ✅ | ✅ | Complete |
 | Button | ✅ | ✅ | ✅ | Complete |
-| Checkbox | ✅ | ⬜ | ⬜ | Partial |
-| Link | ✅ | ⬜ | ⬜ | Partial |
-| Loading | ✅ | ⬜ | ⬜ | Partial |
+| Checkbox | ✅ | ✅ | ✅ | Complete |
+| Link | ✅ | ✅ | ✅ | Complete |
+| Loading | ✅ | ✅ | ✅ | Complete |
 | Tag | ✅ | ✅ | ✅ | Complete |
 | Text Input | ✅ | ✅ | ✅ | Complete |
 | Toggle | ✅ | ✅ | ✅ | Complete |
 | Tooltip | ✅ | ⬜ | ⬜ | Partial |
-| Notification | ✅ | ⬜ | ⬜ | Partial |
+| Notification | ✅ | ✅ | ✅ | Complete |
 
 ---
 
 ### Phase 2: Form Components 🔄 NEXT
 
-| Component | Wrapper | Stories | MDX | Notes |
-|-----------|---------|---------|-----|-------|
+| Component | Wrapper | Stories | MDX | Web Component |
+|-----------|---------|---------|-----|---------------|
 | Radio Button | ⬜ | ⬜ | ⬜ | `cds-radio-button`, `cds-radio-button-group` |
 | Select | ⬜ | ⬜ | ⬜ | `cds-select`, `cds-select-item` |
-| Number Input | ⬜ | ⬜ | ⬜ | Regular + Fluid variants |
-| Text Area | ⬜ | ⬜ | ⬜ | `cds-textarea` + Fluid |
-| Date Picker | ⬜ | ⬜ | ⬜ | Complex - multiple sub-components |
+| Number Input | ⬜ | ⬜ | ⬜ | `cds-number-input` |
+| Text Area | ⬜ | ⬜ | ⬜ | `cds-textarea` |
+| Date Picker | ⬜ | ⬜ | ⬜ | `cds-date-picker` (complex) |
 | Time Picker | ⬜ | ⬜ | ⬜ | `cds-time-picker` |
-| Search | ⬜ | ⬜ | ⬜ | Regular + Fluid variants |
+| Search | ⬜ | ⬜ | ⬜ | `cds-search` |
 | Password Input | ⬜ | ⬜ | ⬜ | `cds-password-input` |
-| File Uploader | ⬜ | ⬜ | ⬜ | Multiple sub-components |
+| File Uploader | ⬜ | ⬜ | ⬜ | `cds-file-uploader` (complex) |
 | Slider | ⬜ | ⬜ | ⬜ | `cds-slider`, `cds-slider-input` |
 | Form Group | ⬜ | ⬜ | ⬜ | `cds-form-group` |
 
@@ -75,8 +240,8 @@ carbon-migration/
 
 ### Phase 3: Selection Components
 
-| Component | Wrapper | Stories | MDX | Notes |
-|-----------|---------|---------|-----|-------|
+| Component | Wrapper | Stories | MDX | Web Component |
+|-----------|---------|---------|-----|---------------|
 | Dropdown | ⬜ | ⬜ | ⬜ | `cds-dropdown` |
 | Combo Box | ⬜ | ⬜ | ⬜ | `cds-combo-box` |
 | Multi Select | ⬜ | ⬜ | ⬜ | `cds-multi-select` |
@@ -86,8 +251,8 @@ carbon-migration/
 
 ### Phase 4: Navigation Components
 
-| Component | Wrapper | Stories | MDX | Notes |
-|-----------|---------|---------|-----|-------|
+| Component | Wrapper | Stories | MDX | Web Component |
+|-----------|---------|---------|-----|---------------|
 | Tabs | ⬜ | ⬜ | ⬜ | `cds-tabs`, `cds-tab` |
 | Breadcrumb | ⬜ | ⬜ | ⬜ | `cds-breadcrumb`, `cds-breadcrumb-item` |
 | Pagination | ⬜ | ⬜ | ⬜ | `cds-pagination` |
@@ -98,123 +263,86 @@ carbon-migration/
 
 ### Phase 5: UI Shell & Layout
 
-| Component | Wrapper | Stories | MDX | Notes |
-|-----------|---------|---------|-----|-------|
-| Header | ⬜ | ⬜ | ⬜ | Complex - 10+ sub-components |
-| Side Nav | ⬜ | ⬜ | ⬜ | Multiple sub-components |
+| Component | Wrapper | Stories | MDX | Web Component |
+|-----------|---------|---------|-----|---------------|
+| Header | ⬜ | ⬜ | ⬜ | `cds-header` (10+ sub-components) |
+| Side Nav | ⬜ | ⬜ | ⬜ | `cds-side-nav` |
 | Grid | ⬜ | ⬜ | ⬜ | `cds-grid`, `cds-row`, `cds-column` |
 | Stack | ⬜ | ⬜ | ⬜ | `cds-stack` |
-| Page Header | ⬜ | ⬜ | ⬜ | IBM pattern |
 
 ---
 
 ### Phase 6: Data Display
 
-| Component | Wrapper | Stories | MDX | Notes |
-|-----------|---------|---------|-----|-------|
-| Data Table | ⬜ | ⬜ | ⬜ | **COMPLEX** - 20+ sub-components |
-| Structured List | ⬜ | ⬜ | ⬜ | Multiple row/cell components |
-| List | ⬜ | ⬜ | ⬜ | Ordered/Unordered |
+| Component | Wrapper | Stories | MDX | Web Component |
+|-----------|---------|---------|-----|---------------|
+| Data Table | ⬜ | ⬜ | ⬜ | `cds-table` (20+ sub-components) |
+| Structured List | ⬜ | ⬜ | ⬜ | `cds-structured-list` |
+| List | ⬜ | ⬜ | ⬜ | `cds-ordered-list`, `cds-unordered-list` |
 | Contained List | ⬜ | ⬜ | ⬜ | `cds-contained-list` |
-| Tile | ⬜ | ⬜ | ⬜ | Multiple variants |
-| Code Snippet | ⬜ | ⬜ | ⬜ | Single, Multi, Inline |
+| Tile | ⬜ | ⬜ | ⬜ | `cds-tile`, `cds-clickable-tile` |
+| Code Snippet | ⬜ | ⬜ | ⬜ | `cds-code-snippet` |
 
 ---
 
 ### Phase 7: Overlays & Feedback
 
-| Component | Wrapper | Stories | MDX | Notes |
-|-----------|---------|---------|-----|-------|
-| Modal | ⬜ | ⬜ | ⬜ | `cds-modal`, header, body, footer |
+| Component | Wrapper | Stories | MDX | Web Component |
+|-----------|---------|---------|-----|---------------|
+| Modal | ⬜ | ⬜ | ⬜ | `cds-modal`, `cds-modal-header` |
 | Overflow Menu | ⬜ | ⬜ | ⬜ | `cds-overflow-menu` |
-| Context Menu | ⬜ | ⬜ | ⬜ | `cds-menu` component |
+| Context Menu | ⬜ | ⬜ | ⬜ | `cds-menu` |
 | Popover | ⬜ | ⬜ | ⬜ | `cds-popover` |
 | Toggle Tip | ⬜ | ⬜ | ⬜ | `cds-toggletip` |
 | Progress Bar | ⬜ | ⬜ | ⬜ | `cds-progress-bar` |
 | Inline Loading | ⬜ | ⬜ | ⬜ | `cds-inline-loading` |
-| Side Panel | ⬜ | ⬜ | ⬜ | IBM pattern |
-| Tearsheet | ⬜ | ⬜ | ⬜ | IBM pattern |
 
 ---
 
 ### Phase 8: Advanced & AI Components
 
-| Component | Wrapper | Stories | MDX | Notes |
-|-----------|---------|---------|-----|-------|
+| Component | Wrapper | Stories | MDX | Web Component |
+|-----------|---------|---------|-----|---------------|
 | AI Label | ⬜ | ⬜ | ⬜ | `cds-ai-label` |
-| AI Skeleton | ⬜ | ⬜ | ⬜ | AI-specific skeleton |
+| AI Skeleton | ⬜ | ⬜ | ⬜ | `cds-ai-skeleton` |
 | Copy Button | ⬜ | ⬜ | ⬜ | `cds-copy-button` |
 | Menu Button | ⬜ | ⬜ | ⬜ | `cds-menu-button` |
 | Combo Button | ⬜ | ⬜ | ⬜ | `cds-combo-button` |
 | Icon Button | ⬜ | ⬜ | ⬜ | `cds-icon-button` |
-| Skeleton components | ⬜ | ⬜ | ⬜ | Icon, Text, Placeholder |
+| Skeleton components | ⬜ | ⬜ | ⬜ | `cds-skeleton-icon`, `cds-skeleton-text` |
 
----
-
-## Validation Checklist
-
-> [!IMPORTANT]
-> Check these for every component implementation.
-
-### 1. Property Binding Rules
-
-Check source at: `carbon/packages/web-components/src/components/{component}/{component}.ts`
-
-| Decorator | Vue Binding |
-|-----------|-------------|
-| `@property()` with NO `attribute:` | Use **camelCase**: `:isExpressive` |
-| `@property({ attribute: 'kebab-name' })` | Use **kebab-case**: `:kebab-name` |
-
-**Known camelCase (no `attribute:`):**
-- `isExpressive`, `isSelected`, `isFlush`, `hideLabel` (Toggle), `readonly`
-
-**Known kebab-case (has `attribute:`):**
-- `hide-close-button`, `low-contrast`, `helper-text`, `invalid-text`, `label-text`
-
-### 2. With Layer Template
-
-Uses `deepCloneWithProperties()` - must preserve these properties when cloning:
-```typescript
-['titleText', 'labelText', 'helperText', 'placeholder', 'value', 
- 'checked', 'disabled', 'readonly', 'open', 'expanded', 'size', 'kind']
-```
-
-### 3. Story Parity
-- Match story order from `@carbon/web-components`
-- Include "With Layer" story using `<sb-template-layers>`
-- Expose all props in Storybook controls
-
----
-
-## Completed Work
-
-### Files Modified
-| File | Change |
-|------|--------|
-| `with-layer.ts` | Rebuilt with `deepCloneWithProperties()` |
-| `CvAccordion.vue` | Fixed `:isFlush` |
-| `CvButton.vue` | Fixed `:isExpressive`, `:isSelected` |
-| `CvToggle.vue` | Fixed `:hideLabel` |
-| `CvTextInput.vue` | Fixed `:readonly` |
-| `CvCheckbox.vue` | Fixed `:readonly` |
+**Pending AI Label Stories** (add after AI Label is implemented):
+- [ ] Checkbox - WithAILabel story
+- [ ] Tag - WithAILabel story
+- [ ] Text Input - WithAILabel story
+- [ ] Toggle - WithAILabel story
 
 ---
 
 ## Running the Project
 
 ```bash
+# Start carbon-vue Storybook
 cd carbon-vue
 npm run storybook  # http://localhost:7007
+
+# Start reference @carbon/web-components Storybook
+cd carbon/packages/web-components
+yarn storybook     # http://localhost:6006
+
+# Build to verify no errors
+cd carbon-vue
+npm run storybook:build
 ```
 
 ---
 
-## Next Steps
+## Notes for Completed Components
 
-1. Complete Phase 1 MDX docs (Checkbox, Link, Loading, Tooltip, Notification)
-2. Begin Phase 2: Form Components - Radio Button, Select, Number Input
-3. For each component:
-   - Check `@property()` decorators for binding format
-   - Create stories matching original order
-   - Add With Layer story if applicable
-   - Create MDX documentation
+| Component | Key Learnings |
+|-----------|---------------|
+| Loading | Uses `active` (not `inactive`), `withOverlay` (not `overlay`) |
+| Tag | Multiple variants: CvTag, CvDismissibleTag, CvSelectableTag, CvOperationalTag |
+| Notification | 4 types: Actionable, Inline, Toast, Callout - each with own stories/MDX |
+| Button | Uses camelCase: `isExpressive`, `isSelected` |
+| Toggle | Uses camelCase: `hideLabel` |

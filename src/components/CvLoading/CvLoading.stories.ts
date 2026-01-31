@@ -5,9 +5,9 @@ const meta: Meta<typeof CvLoading> = {
     title: 'Components/Loading',
     component: CvLoading,
     argTypes: {
-        inactive: {
+        active: {
             control: 'boolean',
-            description: 'Specify whether the component should be inactive, or not.',
+            description: 'Specify whether the component should be active, or not.',
         },
         description: {
             control: 'text',
@@ -17,16 +17,16 @@ const meta: Meta<typeof CvLoading> = {
             control: 'boolean',
             description: 'Specify whether you would like the small variant of loading',
         },
-        overlay: {
+        withOverlay: {
             control: 'boolean',
             description: 'Specify whether the loading should be an overlay.',
         },
     },
     args: {
-        inactive: false,
+        active: true,
         description: 'Loading',
         small: false,
-        overlay: false,
+        withOverlay: false,
     },
 };
 

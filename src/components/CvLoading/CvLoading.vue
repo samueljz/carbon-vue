@@ -9,35 +9,29 @@ export interface CvLoadingProps {
   /**
    * Specify whether the loading is active
    */
-  inactive?: boolean;
+  active?: boolean;
   /**
    * Specify whether to use the overlay
    */
-  overlay?: boolean;
+  withOverlay?: boolean;
   /**
    * Specify whether to use the small variant
    */
   small?: boolean;
-  /**
-   * Specify the type (regular or small)
-   */
-  type?: 'regular' | 'small';
 }
 
 withDefaults(defineProps<CvLoadingProps>(), {
-  inactive: false,
-  overlay: false,
+  active: true,
+  withOverlay: false,
   small: false,
-  type: 'regular',
 });
 </script>
 
 <template>
   <cds-loading
     :description="description"
-    :inactive="inactive || undefined"
-    :overlay="overlay || undefined"
+    :active="active || undefined"
+    :overlay="withOverlay || undefined"
     :small="small || undefined"
-    :type="type"
   />
 </template>

@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import '@carbon/web-components/es/components/tag/index.js';
-import type { TagType, TagSize } from '@/types';
+import type { TagType, TagSize, PopoverAlignment } from '@/types';
 
 export interface CvDismissibleTagProps {
   type?: TagType;
   size?: TagSize;
   disabled?: boolean;
-  title?: string;
+  tagTitle?: string;
   text?: string;
+  dismissTooltipAlignment?: PopoverAlignment;
+  dismissTooltipLabel?: string;
 }
 
 withDefaults(defineProps<CvDismissibleTagProps>(), {
   type: 'gray',
   size: 'md',
   disabled: false,
+  dismissTooltipAlignment: 'bottom',
 });
 
 const emit = defineEmits<{
@@ -26,9 +29,11 @@ const emit = defineEmits<{
     :type="type"
     :size="size"
     :disabled="disabled || undefined"
-    :title="title"
+    :tag-title="tagTitle"
     :text="text"
-    @cds-tag-closed="emit('close', $event)"
+    :dismiss-tooltip-alignment="dismissTooltipAlignment"
+    :dismiss-tooltip-label="dismissTooltipLabel"
+    @cds-dismissible-tag-closed="emit('close', $event)"
   >
     <slot />
   </cds-dismissible-tag>

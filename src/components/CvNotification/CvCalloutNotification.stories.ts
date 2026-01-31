@@ -9,27 +9,24 @@ const kindLabels = {
 const kindOptions = Object.keys(kindLabels);
 
 const args = {
+    actionButtonLabel: '',
     kind: 'info' as NotificationKind,
-    title: 'Notification title',
-    subtitle: 'Subtitle text goes here',
     lowContrast: false,
     statusIconDescription: 'notification',
+    subtitle: 'Subtitle text goes here',
+    title: 'Notification title',
     titleId: '',
 };
 
 const argTypes: ArgTypes = {
+    actionButtonLabel: {
+        control: 'text',
+        description: 'Pass in the action button label that will be rendered within the Callout.',
+    },
     kind: {
         control: { type: 'select', labels: kindLabels },
         options: kindOptions,
         description: 'Specify what state the notification represents.',
-    },
-    title: {
-        control: 'text',
-        description: 'Specify the title.',
-    },
-    subtitle: {
-        control: 'text',
-        description: 'Specify the subtitle.',
     },
     lowContrast: {
         control: 'boolean',
@@ -38,6 +35,14 @@ const argTypes: ArgTypes = {
     statusIconDescription: {
         control: 'text',
         description: 'Provide a description for "status" icon that can be read by screen readers.',
+    },
+    subtitle: {
+        control: 'text',
+        description: 'Specify the subtitle.',
+    },
+    title: {
+        control: 'text',
+        description: 'Specify the title.',
     },
     titleId: {
         control: 'text',
@@ -54,19 +59,6 @@ export default meta;
 type Story = StoryObj<typeof CvCalloutNotification>;
 
 export const Default: Story = {
-    render: () => ({
-        components: { CvCalloutNotification },
-        template: `
-      <CvCalloutNotification
-        kind="info"
-        title="Notification title"
-        subtitle="Subtitle text goes here"
-      />
-    `,
-    }),
-};
-
-export const Playground: Story = {
     args,
     argTypes,
     render: (args) => ({
@@ -74,7 +66,13 @@ export const Playground: Story = {
         setup() {
             return { args };
         },
-        template: '<CvCalloutNotification v-bind="args" />',
+        template: `
+      <CvCalloutNotification v-bind="args">
+        <template v-if="args.actionButtonLabel" #action>
+          <cds-actionable-notification-button slot="action" kind="ghost">{{ args.actionButtonLabel }}</cds-actionable-notification-button>
+        </template>
+      </CvCalloutNotification>
+    `,
     }),
 };
 

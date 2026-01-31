@@ -1,0 +1,53 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as CalloutNotificationStories from './CvCalloutNotification.stories';
+
+<Meta of={CalloutNotificationStories} />
+
+# Callout Notification
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/notification)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/notification/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/notification/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [With Interactive Elements](#with-interactive-elements)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+`CvCalloutNotification` is non-modal and should only be used inline with content on the
+initial render of the page or modal because it will not be announced to
+screenreader users like the other notification components.
+
+As such, this should not be used for real-time notifications or notifications
+responding to user input (unless the page is completely refreshing and bumping
+the users focus back to the first element in the dom/tab order). If a Callout is
+rendered after the initial render, screenreader users' focus may have already
+passed this portion of the DOM and they will not know that the notification has
+been rendered until they circle back to the beginning of the page.
+
+This is the most passive notification component and is essentially just a styled
+div. If you place actions or interactive elements within this component, place
+an `aria-describedby` on the interactive element with a value that matches the
+`titleId` prop.
+
+<Canvas of={CalloutNotificationStories.Default} />
+
+## With Interactive Elements
+
+<Canvas of={CalloutNotificationStories.WithInteractiveElements} />
+
+## Component API
+
+<ArgTypes of={CalloutNotificationStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).

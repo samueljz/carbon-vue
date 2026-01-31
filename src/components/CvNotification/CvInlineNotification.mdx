@@ -1,0 +1,36 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as InlineNotificationStories from './CvInlineNotification.stories';
+
+<Meta of={InlineNotificationStories} />
+
+# Inline Notification
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/notification)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/notification/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/notification/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+The `CvInlineNotification` component cannot contain interactive elements or rich text.
+These are announced by screenreaders when rendered. They don't grab focus.
+Use them to provide the user with an alert, status, or log.
+
+<Canvas of={InlineNotificationStories.Default} />
+
+## Component API
+
+<ArgTypes of={InlineNotificationStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).

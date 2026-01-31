@@ -38,6 +38,20 @@ export type TagType =
 
 export type TagSize = 'sm' | 'md' | 'lg';
 
+export type PopoverAlignment =
+    | 'top'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom'
+    | 'bottom-left'
+    | 'bottom-right'
+    | 'left'
+    | 'left-bottom'
+    | 'left-top'
+    | 'right'
+    | 'right-bottom'
+    | 'right-top';
+
 // Notification types
 export type NotificationKind =
     | 'error'

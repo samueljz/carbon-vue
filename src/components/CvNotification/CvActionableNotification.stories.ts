@@ -12,23 +12,36 @@ const kindLabels = {
 };
 const kindOptions = Object.keys(kindLabels);
 
+const roleLabels = {
+    alertdialog: 'Alert Dialog',
+    alert: 'Alert',
+    status: 'Status',
+};
+const roleOptions = Object.keys(roleLabels);
+
 const args = {
     actionButtonLabel: 'Action',
+    caption: '',
     closeOnEscape: true,
     hasFocus: false,
-    kind: 'error' as NotificationKind,
-    title: 'Notification title',
-    subtitle: 'Subtitle text goes here',
     hideCloseButton: false,
     inline: false,
+    kind: 'error' as NotificationKind,
     lowContrast: false,
+    role: 'alertdialog',
+    subtitle: 'Subtitle text goes here',
     statusIconDescription: 'notification',
+    title: 'Notification title',
 };
 
 const argTypes: ArgTypes = {
     actionButtonLabel: {
         control: 'text',
         description: 'Pass in the action button label that will be rendered within the ActionableNotification.',
+    },
+    caption: {
+        control: 'text',
+        description: 'Specify the caption.',
     },
     closeOnEscape: {
         control: 'boolean',
@@ -38,19 +51,6 @@ const argTypes: ArgTypes = {
         control: 'boolean',
         description: 'Specify if focus should be moved to the component when the notification contains actions.',
     },
-    kind: {
-        control: { type: 'select', labels: kindLabels },
-        options: kindOptions,
-        description: 'Specify what state the notification represents.',
-    },
-    title: {
-        control: 'text',
-        description: 'Specify the title.',
-    },
-    subtitle: {
-        control: 'text',
-        description: 'Specify the subtitle.',
-    },
     hideCloseButton: {
         control: 'boolean',
         description: 'Specify the close button should be disabled, or not.',
@@ -59,13 +59,31 @@ const argTypes: ArgTypes = {
         control: 'boolean',
         description: 'Specify whether the notification should be inline.',
     },
+    kind: {
+        control: { type: 'select', labels: kindLabels },
+        options: kindOptions,
+        description: 'Specify what state the notification represents.',
+    },
     lowContrast: {
         control: 'boolean',
         description: 'Specify whether you are using the low contrast variant of the ActionableNotification.',
     },
+    role: {
+        control: { type: 'select', labels: roleLabels },
+        options: roleOptions,
+        description: 'By default, this value is "alertdialog". You can also provide an alternate role if it makes sense from an accessibility perspective.',
+    },
+    subtitle: {
+        control: 'text',
+        description: 'Specify the subtitle.',
+    },
     statusIconDescription: {
         control: 'text',
         description: 'Provide a description for "status" icon that can be read by screen readers.',
+    },
+    title: {
+        control: 'text',
+        description: 'Specify the title.',
     },
 };
 
