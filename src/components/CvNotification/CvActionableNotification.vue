@@ -38,6 +38,9 @@ const emit = defineEmits<{
     :status-icon-description="statusIconDescription"
     @cds-notification-action-clicked="emit('action', $event)"
   >
+    <slot name="title" />
+    <slot name="subtitle" />
+    <slot name="caption" />
     <slot name="action" />
     <slot />
   </cds-actionable-notification>

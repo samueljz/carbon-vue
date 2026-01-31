@@ -45,6 +45,7 @@ const handleToggle = (event: CustomEvent) => {
     @cds-accordion-item-beingtoggled="handleBeforeToggle"
     @cds-accordion-item-toggled="handleToggle"
   >
+    <slot name="title" />
     <slot />
   </cds-accordion-item>
 </template>

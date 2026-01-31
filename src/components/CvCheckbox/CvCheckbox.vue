@@ -96,5 +96,8 @@ const handleChange = (event: CustomEvent) => {
     @cds-checkbox-changed="handleChange"
   >
     <slot />
+    <slot name="ai-label" />
+    <slot name="decorator" />
+    <slot name="slug" />
   </cds-checkbox>
 </template>

@@ -14,78 +14,101 @@ import * as TooltipStories from './CvTooltip.stories';
 ## Table of Contents
 
 - [Overview](#overview)
-- [Alignment](#alignment)
-- [Duration](#duration)
+  - [Toggletips vs Tooltips](#toggletips-vs-tooltips)
+  - [Customizing the content of a tooltip](#customizing-the-content-of-a-tooltip)
+  - [Tooltip alignment](#tooltip-alignment)
+  - [Customizing the duration of a tooltip](#customizing-the-duration-of-a-tooltip)
 - [Component API](#component-api)
 - [Feedback](#feedback)
 
 ## Overview
 
-Tooltips display additional information upon hover or focus. The information should be contextual, useful, and nonessential.
+You can use the `CvTooltip` component as a wrapper to display a popup for an
+interactive element that you provide. If you are trying to place interactive
+content inside of the `CvTooltip` itself, consider using `Toggletip` instead. You
+can provide the interactive element as a child to `CvTooltip`, for example:
+
+```vue
+<CvTooltip>
+  <button type="button" aria-labelledby="content">X</button>
+  <template #content>
+    <cds-tooltip-content id="content">
+      Occasionally, services are updated in a specified time window to ensure no
+      down time for customers.
+    </cds-tooltip-content>
+  </template>
+</CvTooltip>
+```
+
+`CvTooltip` accepts a single child that is placed as the trigger for the tooltip. It is
+important that the component you provide renders an interactive element. In
+addition, you can specify the contents of the popup using the `content` slot.
 
 <Canvas of={TooltipStories.Default} />
 
-## Alignment
+### Toggletips vs Tooltips
 
-You can specify the alignment of the tooltip relative to its trigger element.
+Toggletips and tooltips are similar visually and both contain a popover and
+interactive trigger element. The two components differ in the way they are
+invoked and dismissed and if the user must interact with the contents. A tooltip
+is exposed on hover or focus when you need to expose brief, supplemental
+information that is not interactive. A toggletip is used on click or enter when
+you need to expose interactive elements, such as button, that a user needs to
+interact with.
+
+### Customizing the content of a tooltip
+
+The `CvTooltip` component supports tooltip customization by passing a child as
+the trigger and using the `content` slot for the tooltip content. By adding an `id`
+to the `cds-tooltip-content` and adding an `aria-labelledby` with the same `id`
+to the child component then the `CvTooltip` should be accessibility compliant.
+
+It's important that the `cds-tooltip-content` has no interactive content. This
+will cause a violation in the component as the semantics of this content will
+not be accessible to users of screen reader software.
+
+### Tooltip alignment
+
+The `align` prop allows you to specify where your content should be placed
+relative to the tooltip. For example, if you provide `align="top"` to the
+`CvTooltip` component then the tooltip will render above your component.
+Similarly, if you provide `align="bottom"` then the tooltip will render below
+your component.
 
 <Canvas of={TooltipStories.Alignment} />
 
-## Duration
+You can also configure the placement of the caret, if it is enabled, by choosing
+between `left` and `right` or `bottom` and `top`, depending on where your
+tooltip is being rendered.
 
-You can control the enter and leave delays for the tooltip.
+If you are using `align="top"`, then you can choose between `align="top-start"`
+and `align="top-end"`. These options will place the caret closer to the start
+or end edges of the tooltip.
+
+If you are using `align="left"` or `align="right"`, you can use `start` or
+`end` to control this alignment.
+
+### Customizing the duration of a tooltip
+
+You can customize the delay between when a tooltip is invoked and its contents
+are shown. You can also customize the delay between when a tooltip is dismissed
+and its contents are hidden.
 
 <Canvas of={TooltipStories.Duration} />
+
+The `enterDelayMs` prop allows you to provide a time, in milliseconds,
+that the component will wait before showing the tooltip. The `leaveDelayMs`
+prop allows you to provide a time, in milliseconds, that the component will
+wait before hiding the tooltip.
+
+By default, these values are set to 100ms for `enterDelayMs` and 300ms for
+`leaveDelayMs`.
 
 ## Component API
 
 <ArgTypes of={TooltipStories} />
 
-### Tooltip `align`
-
-Specify how the trigger should align with the tooltip. Options include:
-- `top`, `top-start`, `top-end`
-- `bottom`, `bottom-start`, `bottom-end`
-- `left`, `left-start`, `left-end`
-- `right`, `right-start`, `right-end`
-
-```vue
-<CvTooltip align="bottom-start">
-  <button>Trigger</button>
-  <template #content>
-    <cds-tooltip-content>Tooltip content</cds-tooltip-content>
-  </template>
-</CvTooltip>
-```
-
-### Tooltip `enterDelay` and `leaveDelay`
-
-Control the delay in milliseconds before showing or hiding the tooltip.
-
-```vue
-<CvTooltip :enter-delay="0" :leave-delay="300">
-  <button>Trigger</button>
-  <template #content>
-    <cds-tooltip-content>Tooltip content</cds-tooltip-content>
-  </template>
-</CvTooltip>
-```
-
-### Tooltip Content
-
-Use the `content` slot to provide the tooltip content. The content should be wrapped in a `cds-tooltip-content` element.
-
-```vue
-<CvTooltip>
-  <button>Trigger element</button>
-  <template #content>
-    <cds-tooltip-content>Your tooltip text here</cds-tooltip-content>
-  </template>
-</CvTooltip>
-```
-
 ## Feedback
 
-Help us improve this component by providing feedback, asking questions on Slack,
-or updating this file on
-[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/tooltip/tooltip.mdx).
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).

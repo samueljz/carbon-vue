@@ -61,6 +61,9 @@ const emit = defineEmits<{
     :status-icon-description="statusIconDescription"
     @cds-notification-closed="emit('close', $event)"
   >
+    <slot name="title" />
+    <slot name="subtitle" />
+    <slot name="caption" />
     <slot />
   </cds-toast-notification>
 </template>

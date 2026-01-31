@@ -29,5 +29,9 @@ const emit = defineEmits<{
     @click="emit('click', $event)"
   >
     <slot />
+    <slot name="icon" />
+    <slot name="decorator" />
+    <slot name="ai-label" />
+    <slot name="slug" />
   </cds-operational-tag>
 </template>

@@ -26,6 +26,8 @@ withDefaults(defineProps<CvCalloutNotificationProps>(), {
     :low-contrast="lowContrast || undefined"
     :status-icon-description="statusIconDescription"
   >
+    <slot name="title" />
+    <slot name="subtitle" />
     <slot />
     <slot name="action" />
   </cds-callout-notification>

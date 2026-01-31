@@ -68,10 +68,17 @@ const emit = defineEmits<{
     :prop-name="propName"
     @cds-{component}-event="emit('eventName', $event)"
   >
+    <!-- Named slots: check reference @slot JSDoc comments and <slot name="..."> in render() -->
+    <slot name="title" />
+    <slot name="subtitle" />
+    <!-- Default slot -->
     <slot />
   </cds-{component}>
 </template>
 ```
+
+> [!IMPORTANT]
+> **Slot Mapping:** Check the reference web component for `<slot name="...">` elements in the `render()` method and `@slot` JSDoc comments. All named slots from the reference should be exposed in the Vue wrapper.
 
 ### Step 3: Create Stories File
 
@@ -215,7 +222,7 @@ npm run storybook  # http://localhost:7007
 | Tag | ✅ | ✅ | ✅ | Complete |
 | Text Input | ✅ | ✅ | ✅ | Complete |
 | Toggle | ✅ | ✅ | ✅ | Complete |
-| Tooltip | ✅ | ⬜ | ⬜ | Partial |
+| Tooltip | ✅ | ✅ | ✅ | Complete |
 | Notification | ✅ | ✅ | ✅ | Complete |
 
 ---

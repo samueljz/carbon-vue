@@ -35,5 +35,9 @@ const handleChange = (event: CustomEvent) => {
     @cds-selectable-tag-changed="handleChange"
   >
     <slot />
+    <slot name="icon" />
+    <slot name="decorator" />
+    <slot name="ai-label" />
+    <slot name="slug" />
   </cds-selectable-tag>
 </template>

@@ -36,5 +36,9 @@ const emit = defineEmits<{
     @cds-dismissible-tag-closed="emit('close', $event)"
   >
     <slot />
+    <slot name="icon" />
+    <slot name="decorator" />
+    <slot name="ai-label" />
+    <slot name="slug" />
   </cds-dismissible-tag>
 </template>

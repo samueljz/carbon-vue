@@ -130,5 +130,9 @@ const handleChange = (event: Event) => {
     @focus="emit('focus', $event)"
   >
     <slot />
+    <slot name="label-text" />
+    <slot name="helper-text" />
+    <slot name="ai-label" />
+    <slot name="slug" />
   </cds-text-input>
 </template>

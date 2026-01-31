@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import '@carbon/web-components/es/components/button/index.js';
-import type { ButtonKind, ButtonSize, ButtonType, TooltipAlignment, TooltipPosition } from '@/types';
+import type { ButtonKind, ButtonSize, ButtonType, ButtonTooltipAlignment, TooltipPosition } from '@/types';
 
 export interface CvButtonProps {
   /**
@@ -42,7 +42,7 @@ export interface CvButtonProps {
   /**
    * Specify the alignment of the tooltip
    */
-  tooltipAlignment?: TooltipAlignment;
+  tooltipAlignment?: ButtonTooltipAlignment;
   /**
    * Specify the message read by screen readers for the danger button variant
    */
@@ -88,5 +88,6 @@ const handleClick = (event: MouseEvent) => {
   >
     <slot />
     <slot name="icon" />
+    <slot name="badge-indicator" />
   </cds-button>
 </template>

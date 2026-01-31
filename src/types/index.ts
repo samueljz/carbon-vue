@@ -12,11 +12,28 @@ export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export type ButtonType = 'button' | 'submit' | 'reset';
 
-export type TooltipAlignment = 'start' | 'center' | 'end';
+export type TooltipAlignment =
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end';
 
+// Button-specific tooltip alignment
+export type ButtonTooltipAlignment = 'start' | 'center' | 'end';
+
+// Button-specific tooltip position
 export type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
 // Accordion types
+
 export type AccordionSize = 'sm' | 'md' | 'lg';
 
 export type AccordionAlignment = 'start' | 'end';

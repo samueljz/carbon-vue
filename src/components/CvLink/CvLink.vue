@@ -57,5 +57,6 @@ const emit = defineEmits<{
     @click="emit('click', $event)"
   >
     <slot />
+    <slot name="icon" />
   </cds-link>
 </template>
