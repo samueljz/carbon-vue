@@ -56,7 +56,7 @@ export interface CvCheckboxProps {
   warnText?: string;
 }
 
-const props = withDefaults(defineProps<CvCheckboxProps>(), {
+withDefaults(defineProps<CvCheckboxProps>(), {
   modelValue: false,
   indeterminate: false,
   disabled: false,

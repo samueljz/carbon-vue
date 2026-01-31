@@ -2,19 +2,21 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 import { CvTextInput, CvTextInputSkeleton } from './index';
 
-const sizeOptions = {
-    'Small (sm)': 'sm',
-    'Medium (md)': 'md',
-    'Large (lg)': 'lg',
+const sizeLabels = {
+    sm: 'Small (sm)',
+    md: 'Medium (md)',
+    lg: 'Large (lg)',
 };
+const sizeOptions = Object.keys(sizeLabels);
 
-const typeOptions = {
-    Text: 'text',
-    Email: 'email',
-    Password: 'password',
-    Tel: 'tel',
-    URL: 'url',
+const typeLabels = {
+    text: 'Text',
+    email: 'Email',
+    password: 'Password',
+    tel: 'Tel',
+    url: 'URL',
 };
+const typeOptions = Object.keys(typeLabels);
 
 const meta: Meta<typeof CvTextInput> = {
     title: 'Components/Text Input',
@@ -57,12 +59,12 @@ const meta: Meta<typeof CvTextInput> = {
             description: 'Specify the warning text',
         },
         size: {
-            control: 'select',
+            control: { type: 'select', labels: sizeLabels },
             options: sizeOptions,
             description: 'Specify the input size',
         },
         type: {
-            control: 'select',
+            control: { type: 'select', labels: typeLabels },
             options: typeOptions,
             description: 'Specify the input type',
         },

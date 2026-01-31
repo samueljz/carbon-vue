@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import '@carbon/web-components/es/components/toggle/index.js';
 import type { ToggleSize } from '@/types';
 
@@ -42,7 +41,7 @@ export interface CvToggleProps {
   readOnly?: boolean;
 }
 
-const props = withDefaults(defineProps<CvToggleProps>(), {
+withDefaults(defineProps<CvToggleProps>(), {
   modelValue: false,
   labelA: 'Off',
   labelB: 'On',
@@ -56,22 +55,6 @@ const emit = defineEmits<{
   'update:modelValue': [value: boolean];
   change: [event: CustomEvent];
 }>();
-
-const toggleRef = ref<HTMLElement | null>(null);
-
-// Watch hideLabel and set the property directly on the element
-// watch(() => props.hideLabel, (newValue) => {
-//   if (toggleRef.value) {
-//     (toggleRef.value as any).hideLabel = newValue;
-//   }
-// }, { immediate: true });
-
-// Set initial hideLabel value after component mounts
-// onMounted(() => {
-//   if (toggleRef.value && props.hideLabel) {
-//     (toggleRef.value as any).hideLabel = props.hideLabel;
-//   }
-// });
 
 const handleChange = (event: CustomEvent) => {
   const target = event.target as HTMLInputElement;

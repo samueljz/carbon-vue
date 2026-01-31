@@ -1,8 +1,8 @@
-import type { Preview } from '@storybook/vue3';
+import type { Preview, StoryFn, StoryContext } from '@storybook/vue3';
 import { setup } from '@storybook/vue3';
 import { white, g10, g90, g100 } from '@carbon/themes';
 import { breakpoints } from '@carbon/layout';
-import theme from './theme';
+import theme from './theme.ts';
 
 // Import Carbon styles
 import '@carbon/styles/css/styles.css';
@@ -167,7 +167,7 @@ export const parameters = {
 };
 
 export const decorators = [
-    (story, context) => {
+    (_story: StoryFn, context: StoryContext) => {
         const { locale, dir, theme } = context.globals;
 
         document.documentElement.setAttribute('storybook-carbon-theme', theme);

@@ -10,7 +10,7 @@ export interface CvSelectableTagProps {
   text?: string;
 }
 
-const props = withDefaults(defineProps<CvSelectableTagProps>(), {
+withDefaults(defineProps<CvSelectableTagProps>(), {
   type: 'gray',
   size: 'md',
   disabled: false,

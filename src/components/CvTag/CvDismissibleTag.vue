@@ -10,7 +10,7 @@ export interface CvDismissibleTagProps {
   text?: string;
 }
 
-const props = withDefaults(defineProps<CvDismissibleTagProps>(), {
+withDefaults(defineProps<CvDismissibleTagProps>(), {
   type: 'gray',
   size: 'md',
   disabled: false,

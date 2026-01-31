@@ -1,55 +1,60 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { CvButton, CvButtonSet, CvButtonSkeleton } from './index';
 
-const kindOptions = {
-    'Primary button (primary)': 'primary',
-    'Secondary button (secondary)': 'secondary',
-    'Tertiary button (tertiary)': 'tertiary',
-    'Danger button (danger)': 'danger',
-    'Danger tertiary button (danger-tertiary)': 'danger-tertiary',
-    'Danger ghost button (danger-ghost)': 'danger-ghost',
-    'Ghost button (ghost)': 'ghost',
+const kindLabels = {
+    primary: 'Primary button (primary)',
+    secondary: 'Secondary button (secondary)',
+    tertiary: 'Tertiary button (tertiary)',
+    danger: 'Danger button (danger)',
+    'danger-tertiary': 'Danger tertiary button (danger-tertiary)',
+    'danger-ghost': 'Danger ghost button (danger-ghost)',
+    ghost: 'Ghost button (ghost)',
 };
+const kindOptions = Object.keys(kindLabels);
 
-const sizeOptions = {
-    'Extra small size (xs)': 'xs',
-    'Small size (sm)': 'sm',
-    'Medium size (md)': 'md',
-    'Large size (lg)': 'lg',
-    'XL size (xl)': 'xl',
-    '2XL size (2xl)': '2xl',
+const sizeLabels = {
+    xs: 'Extra small size (xs)',
+    sm: 'Small size (sm)',
+    md: 'Medium size (md)',
+    lg: 'Large size (lg)',
+    xl: 'XL size (xl)',
+    '2xl': '2XL size (2xl)',
 };
+const sizeOptions = Object.keys(sizeLabels);
 
-const typeOptions = {
-    Button: 'button',
-    Reset: 'reset',
-    Submit: 'submit',
+const typeLabels = {
+    button: 'Button',
+    reset: 'Reset',
+    submit: 'Submit',
 };
+const typeOptions = Object.keys(typeLabels);
 
-const tooltipAlignmentOptions = {
-    Start: 'start',
-    Center: 'center',
-    End: 'end',
+const tooltipAlignmentLabels = {
+    start: 'Start',
+    center: 'Center',
+    end: 'End',
 };
+const tooltipAlignmentOptions = Object.keys(tooltipAlignmentLabels);
 
-const tooltipPositionOptions = {
-    Top: 'top',
-    Right: 'right',
-    Bottom: 'bottom',
-    Left: 'left',
+const tooltipPositionLabels = {
+    top: 'Top',
+    right: 'Right',
+    bottom: 'Bottom',
+    left: 'Left',
 };
+const tooltipPositionOptions = Object.keys(tooltipPositionLabels);
 
 const meta: Meta<typeof CvButton> = {
     title: 'Components/Button',
     component: CvButton,
     argTypes: {
         kind: {
-            control: 'select',
+            control: { type: 'select', labels: kindLabels },
             options: kindOptions,
             description: 'Specify the kind of Button you want to create',
         },
         size: {
-            control: 'select',
+            control: { type: 'select', labels: sizeLabels },
             options: sizeOptions,
             description: 'Specify the size of the button',
         },
@@ -62,7 +67,7 @@ const meta: Meta<typeof CvButton> = {
             description: 'Optionally specify an href for your Button to become an anchor element',
         },
         type: {
-            control: 'radio',
+            control: { type: 'radio', labels: typeLabels },
             options: typeOptions,
             description: 'Optional prop to specify the type of the Button',
         },
@@ -79,12 +84,12 @@ const meta: Meta<typeof CvButton> = {
             description: 'Specify the text to be rendered in the tooltip',
         },
         tooltipPosition: {
-            control: 'radio',
+            control: { type: 'radio', labels: tooltipPositionLabels },
             options: tooltipPositionOptions,
             description: 'Specify the direction of the tooltip',
         },
         tooltipAlignment: {
-            control: 'radio',
+            control: { type: 'radio', labels: tooltipAlignmentLabels },
             options: tooltipAlignmentOptions,
             description: 'Specify the alignment of the tooltip',
         },

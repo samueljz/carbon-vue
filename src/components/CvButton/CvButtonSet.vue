@@ -8,7 +8,7 @@ export interface CvButtonSetProps {
   stacked?: boolean;
 }
 
-const props = withDefaults(defineProps<CvButtonSetProps>(), {
+withDefaults(defineProps<CvButtonSetProps>(), {
   stacked: false,
 });
 </script>

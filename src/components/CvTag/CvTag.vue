@@ -25,7 +25,7 @@ export interface CvTagProps {
   title?: string;
 }
 
-const props = withDefaults(defineProps<CvTagProps>(), {
+withDefaults(defineProps<CvTagProps>(), {
   type: 'gray',
   size: 'md',
   disabled: false,

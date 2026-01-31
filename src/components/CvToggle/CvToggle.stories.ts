@@ -2,10 +2,11 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import { ref } from 'vue';
 import { CvToggle, CvToggleSkeleton } from './index';
 
-const sizeOptions = {
-    'Medium size (default)': 'md',
-    'Small size (sm)': 'sm',
+const sizeLabels = {
+    md: 'Medium size (default)',
+    sm: 'Small size (sm)',
 };
+const sizeOptions = Object.keys(sizeLabels);
 
 const meta: Meta<typeof CvToggle> = {
     title: 'Components/Toggle',
@@ -36,7 +37,7 @@ const meta: Meta<typeof CvToggle> = {
             description: 'Whether the toggle should be read-only',
         },
         size: {
-            control: 'radio',
+            control: { type: 'radio', labels: sizeLabels },
             options: sizeOptions,
             description: "Specify the size of the Toggle. Currently only supports 'sm' or 'md' (default)",
         },

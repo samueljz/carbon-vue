@@ -16,7 +16,7 @@ export interface CvAccordionItemProps {
   disabled?: boolean;
 }
 
-const props = withDefaults(defineProps<CvAccordionItemProps>(), {
+withDefaults(defineProps<CvAccordionItemProps>(), {
   open: false,
   disabled: false,
 });

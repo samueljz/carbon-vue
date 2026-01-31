@@ -1,38 +1,40 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { CvTag, CvDismissibleTag, CvSelectableTag, CvOperationalTag, CvTagSkeleton } from './index';
 
-const typeOptions = {
-    Red: 'red',
-    Magenta: 'magenta',
-    Purple: 'purple',
-    Blue: 'blue',
-    Cyan: 'cyan',
-    Teal: 'teal',
-    Green: 'green',
-    Gray: 'gray',
-    'Cool gray': 'cool-gray',
-    'Warm gray': 'warm-gray',
-    'High contrast': 'high-contrast',
-    Outline: 'outline',
+const typeLabels = {
+    red: 'Red',
+    magenta: 'Magenta',
+    purple: 'Purple',
+    blue: 'Blue',
+    cyan: 'Cyan',
+    teal: 'Teal',
+    green: 'Green',
+    gray: 'Gray',
+    'cool-gray': 'Cool gray',
+    'warm-gray': 'Warm gray',
+    'high-contrast': 'High contrast',
+    outline: 'Outline',
 };
+const typeOptions = Object.keys(typeLabels);
 
-const sizeOptions = {
-    'Small (sm)': 'sm',
-    'Medium (md)': 'md',
-    'Large (lg)': 'lg',
+const sizeLabels = {
+    sm: 'Small (sm)',
+    md: 'Medium (md)',
+    lg: 'Large (lg)',
 };
+const sizeOptions = Object.keys(sizeLabels);
 
 const meta: Meta<typeof CvTag> = {
     title: 'Components/Tag',
     component: CvTag,
     argTypes: {
         type: {
-            control: 'select',
+            control: { type: 'select', labels: typeLabels },
             options: typeOptions,
             description: 'Specify the type of Tag',
         },
         size: {
-            control: 'select',
+            control: { type: 'select', labels: sizeLabels },
             options: sizeOptions,
             description: 'Specify the size of the Tag',
         },

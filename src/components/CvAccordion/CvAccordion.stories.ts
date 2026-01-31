@@ -2,11 +2,12 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 import { CvAccordion, CvAccordionItem, CvAccordionSkeleton } from './index';
 import { CvButton, CvButtonSet } from '../CvButton';
 
-const sizeOptions = {
-  'Small size (sm)': 'sm',
-  'Medium size (md)': 'md',
-  'Large size (lg)': 'lg',
+const sizeLabels = {
+  sm: 'Small size (sm)',
+  md: 'Medium size (md)',
+  lg: 'Large size (lg)',
 };
+const sizeOptions = Object.keys(sizeLabels);
 
 const meta: Meta<typeof CvAccordion> = {
   title: 'Components/Accordion',
@@ -26,7 +27,7 @@ const meta: Meta<typeof CvAccordion> = {
       description: 'Specify whether Accordion text should be flush, default is false, does not work with align="start".',
     },
     size: {
-      control: 'select',
+      control: { type: 'select', labels: sizeLabels },
       options: sizeOptions,
       description: 'Specify the size of the Accordion.',
     },

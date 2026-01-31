@@ -73,7 +73,7 @@ export interface CvTextInputProps {
   enableCounter?: boolean;
 }
 
-const props = withDefaults(defineProps<CvTextInputProps>(), {
+withDefaults(defineProps<CvTextInputProps>(), {
   modelValue: '',
   disabled: false,
   readOnly: false,
