@@ -1,0 +1,125 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as TextInputStories from './CvTextInput.stories';
+
+<Meta of={TextInputStories} />
+
+# Text Input
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/text-input)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/text-input/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/text-input/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Read Only](#read-only)
+- [Skeleton](#skeleton)
+- [With Layer](#with-layer)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+The `CvTextInput` component enables users to enter free-form text data. The
+type of text field used should reflect the length of the content you expect the
+user to enter. The default text input is for short, one-line content.
+
+<Canvas of={TextInputStories.Default} />
+
+## Read Only
+
+<Canvas of={TextInputStories.ReadOnly} />
+
+## Skeleton
+
+<Canvas of={TextInputStories.Skeleton} />
+
+## With Layer
+
+<Canvas of={TextInputStories.WithLayer} />
+
+## Component API
+
+<ArgTypes of={TextInputStories} />
+
+### CvTextInput Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `modelValue` | `string` | `''` | The input value (v-model) |
+| `label` | `string` | - | Specify the label text |
+| `helperText` | `string` | - | Specify the helper text |
+| `placeholder` | `string` | - | Specify the placeholder text |
+| `disabled` | `boolean` | `false` | Whether the input is disabled |
+| `readOnly` | `boolean` | `false` | Whether the input is read-only |
+| `invalid` | `boolean` | `false` | Whether the input is invalid |
+| `invalidText` | `string` | - | The invalid state message |
+| `warn` | `boolean` | `false` | Whether to show a warning |
+| `warnText` | `string` | - | The warning message |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input size |
+| `type` | `string` | `'text'` | Input type |
+| `hideLabel` | `boolean` | `false` | Whether to hide the label |
+| `enableCounter` | `boolean` | `false` | Whether to show character count |
+| `maxLength` | `number` | - | Maximum character length |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `@update:modelValue` | Emitted when input value changes |
+| `@input` | Native input event |
+| `@change` | Native change event |
+| `@blur` | Native blur event |
+| `@focus` | Native focus event |
+
+### Usage with v-model
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { CvTextInput } from '@carbon/vue';
+
+const username = ref('');
+</script>
+
+<template>
+  <CvTextInput
+    v-model="username"
+    label="Username"
+    placeholder="Enter your username"
+    helper-text="This will be visible to other users"
+  />
+</template>
+```
+
+### Validation Example
+
+```vue
+<script setup>
+import { ref, computed } from 'vue';
+import { CvTextInput } from '@carbon/vue';
+
+const email = ref('');
+const isInvalid = computed(() => {
+  if (!email.value) return false;
+  return !email.value.includes('@');
+});
+</script>
+
+<template>
+  <CvTextInput
+    v-model="email"
+    label="Email"
+    :invalid="isInvalid"
+    invalid-text="Please enter a valid email address"
+  />
+</template>
+```
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/text-input/text-input.mdx).

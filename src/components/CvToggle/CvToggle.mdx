@@ -1,0 +1,120 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as ToggleStories from './CvToggle.stories';
+
+<Meta of={ToggleStories} />
+
+# Toggle
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/toggle)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/toggle/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/toggle/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Small Toggle](#small-toggle)
+- [Skeleton](#skeleton)
+- [With Accessible Labels](#with-accessible-labels)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+<Canvas of={ToggleStories.Default} />
+
+## Small Toggle
+
+<Canvas of={ToggleStories.SmallToggle} />
+
+## Skeleton
+
+<Canvas of={ToggleStories.Skeleton} />
+
+## With Accessible Labels
+
+<Canvas of={ToggleStories.WithAccessibleLabels} />
+
+## Component API
+
+<ArgTypes of={ToggleStories} />
+
+### CvToggle Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `modelValue` | `boolean` | `false` | The checked state (v-model) |
+| `labelText` | `string` | - | The label text for the toggle |
+| `labelA` | `string` | `'Off'` | Label for the unchecked state |
+| `labelB` | `string` | `'On'` | Label for the checked state |
+| `disabled` | `boolean` | `false` | Whether the toggle is disabled |
+| `hideLabel` | `boolean` | `false` | Whether to hide the label |
+| `name` | `string` | - | The toggle name attribute |
+| `size` | `'sm' \| 'md'` | `'md'` | Toggle size |
+| `readOnly` | `boolean` | `false` | Whether the toggle is read-only |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `@update:modelValue` | Emitted when toggle state changes |
+| `@change` | Native change event |
+
+### Usage with v-model
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { CvToggle } from '@carbon/vue';
+
+const darkMode = ref(false);
+</script>
+
+<template>
+  <CvToggle
+    v-model="darkMode"
+    label-text="Dark mode"
+  />
+  <p>Dark mode is {{ darkMode ? 'enabled' : 'disabled' }}</p>
+</template>
+```
+
+### Custom Labels
+
+```vue
+<CvToggle
+  v-model="isActive"
+  label-text="Status"
+  label-a="Inactive"
+  label-b="Active"
+/>
+```
+
+### Small Toggle
+
+```vue
+<CvToggle
+  v-model="value"
+  label-text="Small toggle"
+  size="sm"
+/>
+```
+
+### Hidden Label
+
+When you need to hide the label visually but keep it accessible to screen readers:
+
+```vue
+<CvToggle
+  v-model="value"
+  label-text="Toggle (hidden label)"
+  hide-label
+/>
+```
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/toggle/toggle.mdx).

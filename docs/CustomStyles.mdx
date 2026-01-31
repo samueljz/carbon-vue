@@ -1,0 +1,131 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Custom styles" />
+
+# Custom Styles
+
+Carbon Vue components are built on top of `@carbon/web-components`, which use the Carbon Design System's CSS custom properties (CSS variables) for theming.
+
+## Using CSS Custom Properties
+
+All Carbon components use CSS custom properties for colors, spacing, and typography. You can override these properties to customize the appearance:
+
+```css
+:root {
+  /* Override the primary button background */
+  --cds-button-primary: #0043ce;
+  
+  /* Override spacing */
+  --cds-spacing-05: 1.5rem;
+}
+```
+
+## Theming
+
+### Available Themes
+
+Carbon provides four built-in themes:
+
+| Theme | Class | Description |
+|-------|-------|-------------|
+| White | `cds--white` | Light theme with white background |
+| Gray 10 | `cds--g10` | Light theme with gray background |
+| Gray 90 | `cds--g90` | Dark theme |
+| Gray 100 | `cds--g100` | Dark theme with pure black |
+
+### Applying Themes
+
+Apply themes by adding the appropriate class to a container element:
+
+```vue
+<template>
+  <div class="cds--g90">
+    <CvButton>I'm in dark mode</CvButton>
+  </div>
+</template>
+```
+
+### Dynamic Theme Switching
+
+```vue
+<script setup>
+import { ref } from 'vue';
+
+const currentTheme = ref('white');
+
+const themes = ['white', 'g10', 'g90', 'g100'];
+</script>
+
+<template>
+  <div :class="`cds--${currentTheme}`">
+    <select v-model="currentTheme">
+      <option v-for="theme in themes" :key="theme" :value="theme">
+        {{ theme }}
+      </option>
+    </select>
+    <CvButton>Themed Button</CvButton>
+  </div>
+</template>
+```
+
+## Layer Support
+
+Carbon uses a layering system to create visual hierarchy. Use the `CvLayer` component to apply different background levels:
+
+```vue
+<template>
+  <CvLayer>
+    <p>Layer 1 content</p>
+    <CvLayer>
+      <p>Layer 2 content (slightly darker/lighter)</p>
+      <CvLayer>
+        <p>Layer 3 content</p>
+      </CvLayer>
+    </CvLayer>
+  </CvLayer>
+</template>
+```
+
+## Importing Styles
+
+Make sure to import Carbon styles in your application:
+
+```typescript
+// Import all Carbon styles
+import '@carbon/styles/css/styles.css';
+
+// Or import specific component styles
+import '@carbon/styles/scss/components/button';
+```
+
+## Customizing Component Styles
+
+### Using CSS
+
+You can target Carbon web components directly:
+
+```css
+cds-button {
+  --cds-button-primary: #0043ce;
+}
+
+cds-button::part(button) {
+  border-radius: 4px;
+}
+```
+
+### Using Vue Scoped Styles
+
+When using scoped styles, use `:deep()` to target web component internals:
+
+```vue
+<style scoped>
+:deep(cds-button) {
+  margin-bottom: 1rem;
+}
+
+:deep(cds-button)::part(button) {
+  font-weight: 600;
+}
+</style>
+```

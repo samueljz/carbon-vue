@@ -1,0 +1,161 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as ButtonStories from './CvButton.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/button)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/button/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/button/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Secondary Button](#secondary)
+- [Tertiary Button](#tertiary)
+- [Ghost Button](#ghost)
+- [Danger Button](#danger-button)
+- [Icon-only Button](#icon-only-button)
+- [Set of Buttons](#set-of-buttons)
+- [Skeleton state](#skeleton-state)
+- [Component API](#component-api)
+  - [Button `href`](#button-href)
+  - [Button `kind`](#button-kind)
+  - [Button `size`](#button-size)
+  - [Button Set `stacked`](#button-set-stacked)
+- [References](#references)
+- [Feedback](#feedback)
+
+## Overview
+
+Buttons are clickable elements that are used to trigger actions. They
+communicate calls to action to the user and allow users to interact with pages
+in a variety of ways. `Button` labels express what action will occur when the
+user interacts with it.
+
+<Canvas of={ButtonStories.Default} />
+
+## Secondary
+
+<Canvas of={ButtonStories.Secondary} />
+
+## Tertiary
+
+<Canvas of={ButtonStories.Tertiary} />
+
+## Ghost
+
+<Canvas of={ButtonStories.Ghost} />
+
+## Danger Button
+
+The danger button has three different styles: primary, tertiary, and ghost.
+Determining which danger button style to use will depend on the level of
+emphasis you want to give to the danger action. Destructive actions that are
+considered a required or primary step in a workflow should use the primary
+danger button style. However, if a destructive action is just one of several
+actions a user could choose from, then a lower emphasis style like the danger
+tertiary button or the danger ghost button may be more appropriate.
+
+<Canvas of={ButtonStories.Danger} />
+
+## Icon-only Button
+
+Icon buttons allow users to take actions, and make choices, with a single tap.
+Icon buttons can take the form of Primary, Secondary, Tertiary, and Ghost but
+most commonly will be styled as primary or ghost buttons. Icon only buttons do
+not support Danger, Danger tertiary, or Danger ghost.
+
+<Canvas of={ButtonStories.IconButton} />
+
+## Set of Buttons
+
+You can wrap two `CvButton` elements in a `CvButtonSet` when an action required by
+the user has more than one option. Always use a negative action button
+(secondary) paired with a positive action button (primary) in that order.
+Negative action buttons will be on the left. Positive action buttons should be
+on the right. When these two types buttons are paired in the correct order, they
+will automatically space themselves apart.
+
+<Canvas of={ButtonStories.SetOfButtons} />
+
+## Skeleton state
+
+You can use the `CvButtonSkeleton` component to render a skeleton variant of a
+button. This is useful to display on initial page load to indicate to users that
+content is being loaded.
+
+<Canvas of={ButtonStories.Skeleton} />
+
+## Component API
+
+<ArgTypes of={ButtonStories} />
+
+### Button `href`
+
+This prop allows you to specify an address to navigate to on click. This
+will change the underlying `Button` element to be rendered as an `a` anchor
+element.
+
+```vue
+<CvButton href="https://www.carbondesignsystem.com">Navigate</CvButton>
+```
+
+### Button `kind`
+
+Carbon has seven types of buttons, `primary`, `secondary`, `tertiary`, `ghost`,
+`danger`, `danger-tertiary`, and `danger-ghost`. If no `kind` is specified, a
+`primary` button will be rendered.
+
+```vue
+<CvButton>Primary</CvButton>
+<CvButton kind="secondary">Secondary</CvButton>
+<CvButton kind="tertiary">Tertiary</CvButton>
+<CvButton kind="danger">Danger</CvButton>
+<CvButton kind="danger-tertiary">Danger tertiary</CvButton>
+<CvButton kind="danger-ghost">Danger Ghost</CvButton>
+<CvButton kind="ghost">Ghost</CvButton>
+```
+
+### Button `size`
+
+This prop specifies at which size the `button` should be rendered. Valid
+values are `sm`, `md`, `lg`, `xl`, and `2xl`. If no size is specified, it
+renders as `lg`.
+
+```vue
+<CvButton>Button</CvButton>
+<CvButton size="sm">Button</CvButton>
+<CvButton size="md">Button</CvButton>
+<CvButton size="xl">Button</CvButton>
+<CvButton size="2xl">Button</CvButton>
+```
+
+### Button Set `stacked`
+
+By using the `stacked` prop with the `CvButtonSet` component, you can
+arrange your two `CvButton` elements vertically.
+
+```vue
+<CvButtonSet stacked>
+  <CvButton kind="secondary">Secondary button</CvButton>
+  <CvButton kind="primary">Primary button</CvButton>
+</CvButtonSet>
+```
+
+## References
+
+[MDN: ARIA button role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role)
+
+[W3: Role attribute](https://www.w3.org/WAI/PF/HTML/wiki/RoleAttribute)
+
+[W3: ARIA button role example](https://www.w3.org/TR/2016/WD-wai-aria-practices-1.1-20160317/examples/button/button.html)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/button/button.mdx)

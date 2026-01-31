@@ -1,0 +1,162 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as TagStories from './CvTag.stories';
+
+<Meta of={TagStories} />
+
+# Tag
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/tag)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/tag/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/tag/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Read Only](#read-only)
+- [Dismissible](#dismissible)
+- [Selectable](#selectable)
+- [Operational](#operational)
+- [Skeleton](#skeleton)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+Tags can be used to categorize items. Use short labels for easy scanning. Use
+two words only if necessary to describe the status and differentiate it from
+other tags.
+
+<Canvas of={TagStories.Default} />
+
+## Read Only
+
+Read-only tags are used to categorize, are used for labeling, and do not have
+interactive functionality. Read-only tags come in several color choices and can
+use optional decorative icons to delineate between multiple categories.
+
+<Canvas of={TagStories.ReadOnly} />
+
+## Dismissible
+
+Dismissible tags are used to remove tags that can be filtered out by the user.
+
+When to use:
+
+- Use `CvDismissibleTag` when you want to allow users to easily clear or dismiss
+  specific filters applied to items.
+
+<Canvas of={TagStories.Dismissible} />
+
+Here is a sample code to help you get started:
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { CvDismissibleTag, CvButton } from '@carbon/vue';
+
+const tags = ref([
+  { type: 'red', text: 'Tag content with a long text description' },
+  { type: 'magenta', text: 'Tag content 1' },
+  { type: 'purple', text: 'Tag content 2' },
+]);
+
+const handleClose = (index) => {
+  tags.value.splice(index, 1);
+};
+
+const resetTags = () => {
+  tags.value = [
+    { type: 'red', text: 'Tag content with a long text description' },
+    { type: 'magenta', text: 'Tag content 1' },
+    { type: 'purple', text: 'Tag content 2' },
+  ];
+};
+</script>
+
+<template>
+  <CvButton @click="resetTags">Reset</CvButton>
+  <div style="margin-top: 1rem;">
+    <CvDismissibleTag
+      v-for="(tag, index) in tags"
+      :key="index"
+      :type="tag.type"
+      :text="tag.text"
+      @close="handleClose(index)"
+    />
+  </div>
+</template>
+```
+
+## Selectable
+
+Selectable tags are used to select or unselect single or multiple items.
+Selectable tags can also be used in filtering by label scenarios when they do
+not need to be dismissed.
+
+When to use:
+
+- Use selectable tags to toggle between a selected or unselected state.
+- Use when needing to filter without an explicit dismissable functionality.
+
+<Canvas of={TagStories.Selectable} />
+
+Here is a sample code to help you get started:
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { CvSelectableTag } from '@carbon/vue';
+
+const tags = ref([
+  { text: 'Tag content 1', selected: false },
+  { text: 'Tag content 2', selected: true },
+  { text: 'Tag content 3', selected: false },
+]);
+</script>
+
+<template>
+  <div role="group" aria-label="Selectable tags">
+    <CvSelectableTag
+      v-for="(tag, index) in tags"
+      :key="index"
+      v-model:selected="tag.selected"
+      :text="tag.text"
+    />
+  </div>
+</template>
+```
+
+## Operational
+
+Operational tags enable the user to view a list of all items associated with a
+given tag in different ways.
+
+When to use:
+
+- Use to view a list of items with the same tag in a popover, or breadcrumb
+  detail view.
+
+When not to use:
+
+- Do not use operational tags as a replacement for links that direct you to an
+  entirely different page or launch you out to another tab.
+- Do not use in combination with Dismissable tags. Instead, consider letting the
+  user enter an "edit mode" to dismiss tags.
+
+<Canvas of={TagStories.Operational} />
+
+## Skeleton
+
+<Canvas of={TagStories.Skeleton} />
+
+## Component API
+
+<ArgTypes of={TagStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/tag/tag.mdx).

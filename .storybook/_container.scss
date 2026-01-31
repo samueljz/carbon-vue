@@ -1,0 +1,53 @@
+@use '@carbon/styles/scss/theme' as *;
+@use '@carbon/styles/scss/themes';
+
+// Container styles for Storybook stories
+.sb-carbon-container {
+  padding: 1rem;
+  min-height: 100vh;
+  background: var(--cds-background);
+  color: var(--cds-text-primary);
+}
+
+// Theme classes
+.cds--white {
+  @include theme(themes.$white);
+}
+
+.cds--g10 {
+  @include theme(themes.$g10);
+}
+
+.cds--g90 {
+  @include theme(themes.$g90);
+}
+
+.cds--g100 {
+  @include theme(themes.$g100);
+}
+
+// Reset Storybook docs styles that conflict with Carbon
+.sbdocs-wrapper {
+  background: var(--cds-background) !important;
+}
+
+.sbdocs-content {
+  max-width: 100% !important;
+}
+
+// Ensure Carbon components render correctly
+[storybook-carbon-theme='white'] {
+  @include theme(themes.$white);
+}
+
+[storybook-carbon-theme='g10'] {
+  @include theme(themes.$g10);
+}
+
+[storybook-carbon-theme='g90'] {
+  @include theme(themes.$g90);
+}
+
+[storybook-carbon-theme='g100'] {
+  @include theme(themes.$g100);
+}

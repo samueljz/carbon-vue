@@ -1,0 +1,76 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Welcome" />
+
+# Carbon Vue
+
+Vue 3 wrapper components for the [Carbon Design System](https://carbondesignsystem.com) web components.
+
+## Overview
+
+Carbon Vue provides Vue 3 components that wrap `@carbon/web-components`, giving you:
+
+- **Vue Composition API** - All components use `<script setup>` with TypeScript
+- **v-model support** - Form components support two-way binding
+- **Vue-style events** - Emit both native events and Vue conventions (`@update:modelValue`)
+- **Slot forwarding** - Full slot support for customization
+- **TypeScript** - Full type definitions for props and events
+
+## Installation
+
+```bash
+npm install @carbon/vue
+```
+
+## Usage
+
+```vue
+<script setup>
+import { CvButton, CvTextInput } from '@carbon/vue';
+import { ref } from 'vue';
+
+const inputValue = ref('');
+</script>
+
+<template>
+  <CvTextInput
+    v-model="inputValue"
+    label="Username"
+    placeholder="Enter your username"
+  />
+  <CvButton @click="handleSubmit">Submit</CvButton>
+</template>
+```
+
+## Component Naming
+
+All components use the `Cv` prefix to avoid conflicts with native HTML elements and other libraries:
+
+| Carbon Web Component | Vue Component |
+|---------------------|---------------|
+| `cds-button` | `CvButton` |
+| `cds-accordion` | `CvAccordion` |
+| `cds-text-input` | `CvTextInput` |
+| `cds-modal` | `CvModal` |
+
+## Theming
+
+Carbon Vue uses the same theming tokens as `@carbon/web-components`. You can switch between themes using CSS classes:
+
+- `cds--white` - White theme (default)
+- `cds--g10` - Gray 10 theme
+- `cds--g90` - Gray 90 theme (dark)
+- `cds--g100` - Gray 100 theme (dark)
+
+```html
+<div class="cds--g90">
+  <!-- Dark theme components -->
+  <CvButton>Dark Theme Button</CvButton>
+</div>
+```
+
+## Resources
+
+- [Carbon Design System](https://carbondesignsystem.com)
+- [Carbon Web Components](https://web-components.carbondesignsystem.com)
+- [GitHub Repository](https://github.com/carbon-design-system/carbon)

@@ -1,0 +1,165 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Form Participation" />
+
+# Form Participation
+
+Carbon Vue form components are designed to work seamlessly with Vue's form handling patterns, including `v-model` for two-way data binding.
+
+## v-model Support
+
+All form components support Vue's `v-model` directive for two-way data binding:
+
+```vue
+<script setup>
+import { ref } from 'vue';
+import { CvTextInput, CvCheckbox, CvToggle, CvSelect } from '@carbon/vue';
+
+const username = ref('');
+const rememberMe = ref(false);
+const darkMode = ref(false);
+const country = ref('');
+</script>
+
+<template>
+  <CvTextInput 
+    v-model="username" 
+    label="Username" 
+  />
+  
+  <CvCheckbox 
+    v-model="rememberMe" 
+    label="Remember me" 
+  />
+  
+  <CvToggle 
+    v-model="darkMode" 
+    label="Dark mode" 
+  />
+  
+  <CvSelect v-model="country" label="Country">
+    <CvSelectItem value="us">United States</CvSelectItem>
+    <CvSelectItem value="ca">Canada</CvSelectItem>
+    <CvSelectItem value="uk">United Kingdom</CvSelectItem>
+  </CvSelect>
+</template>
+```
+
+## Form Validation
+
+### Invalid State
+
+Use the `invalid` and `invalidText` props to show validation errors:
+
+```vue
+<script setup>
+import { ref, computed } from 'vue';
+
+const email = ref('');
+const isInvalid = computed(() => {
+  if (!email.value) return false;
+  return !email.value.includes('@');
+});
+</script>
+
+<template>
+  <CvTextInput
+    v-model="email"
+    label="Email"
+    :invalid="isInvalid"
+    invalid-text="Please enter a valid email address"
+  />
+</template>
+```
+
+### Warn State
+
+Some components support a warning state for non-blocking validation:
+
+```vue
+<CvTextInput
+  v-model="password"
+  label="Password"
+  :warn="password.length < 8 && password.length > 0"
+  warn-text="Password should be at least 8 characters"
+/>
+```
+
+## Form Groups
+
+Use `CvFormGroup` to group related form elements:
+
+```vue
+<template>
+  <CvForm @submit.prevent="handleSubmit">
+    <CvFormGroup legend-text="Personal Information">
+      <CvTextInput v-model="firstName" label="First name" />
+      <CvTextInput v-model="lastName" label="Last name" />
+    </CvFormGroup>
+    
+    <CvFormGroup legend-text="Contact">
+      <CvTextInput v-model="email" label="Email" type="email" />
+      <CvTextInput v-model="phone" label="Phone" type="tel" />
+    </CvFormGroup>
+    
+    <CvButton type="submit">Submit</CvButton>
+  </CvForm>
+</template>
+```
+
+## Events
+
+Form components emit both native web component events and Vue-style events:
+
+| Event | Description |
+|-------|-------------|
+| `@update:modelValue` | Vue v-model event, emitted on value change |
+| `@input` | Native input event |
+| `@change` | Native change event |
+| `@blur` | Native blur event |
+| `@focus` | Native focus event |
+
+```vue
+<CvTextInput
+  v-model="value"
+  @update:modelValue="handleModelUpdate"
+  @input="handleInput"
+  @change="handleChange"
+  @blur="handleBlur"
+/>
+```
+
+## Disabled State
+
+All form components support a `disabled` prop:
+
+```vue
+<CvTextInput
+  v-model="value"
+  label="Disabled input"
+  disabled
+/>
+```
+
+## Read-only State
+
+Some components support a read-only state:
+
+```vue
+<CvTextInput
+  v-model="value"
+  label="Read-only input"
+  read-only
+/>
+```
+
+## Skeleton States
+
+Form components have skeleton variants for loading states:
+
+```vue
+<template>
+  <CvTextInputSkeleton v-if="loading" />
+  <CvTextInput v-else v-model="value" label="Username" />
+</template>
+```

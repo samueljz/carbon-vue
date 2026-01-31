@@ -1,0 +1,136 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import * as AccordionStories from './CvAccordion.stories';
+
+<Meta of={AccordionStories} />
+
+# Accordion
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/accordion)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/accordion/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/accordion/accessibility)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Controlled](#controlled)
+- [Skeleton state](#skeleton-state)
+- [With Layer](#with-layer)
+- [Component API](#component-api)
+  - [Accordion `alignment`](#accordion-alignment)
+  - [Accordion `isFlush`](#accordion-isflush)
+  - [Accordion `size`](#accordion-size)
+  - [AccordionItem `open`](#accordionitem-open)
+  - [AccordionItem `disabled`](#accordionitem-disabled)
+- [References](#references)
+- [Feedback](#feedback)
+
+## Overview
+
+The accordion component delivers large amounts of content in a small space
+through progressive disclosure. The header title gives the user a high level
+overview of the content allowing the user to decide which sections to read.
+
+Accordions can make information processing and discovering more effective.
+However, it does hide content from users and it's important to account for a
+defined user need before using an accordion.
+
+<Canvas of={AccordionStories.Default} />
+
+## Controlled
+
+You can programmatically control the accordion by managing the `open` state
+of each `CvAccordionItem`. Use the `@update:open` event to sync the state.
+
+<Canvas of={AccordionStories.Controlled} />
+
+## Skeleton state
+
+You can use the `CvAccordionSkeleton` component to render a skeleton variant of
+an accordion. This is useful to display on initial page load to indicate to
+users that content is being loaded.
+
+<Canvas of={AccordionStories.Skeleton} />
+
+## With Layer
+
+<Canvas of={AccordionStories.WithLayer} />
+
+## Component API
+
+<ArgTypes of={AccordionStories} />
+
+### Accordion `alignment`
+
+Use the `alignment` prop to change the position of the accordion heading title
+and chevron. The default alignment is `end`.
+
+```vue
+<CvAccordion alignment="start">
+  <CvAccordionItem title="Section 1">Content</CvAccordionItem>
+</CvAccordion>
+```
+
+### Accordion `isFlush`
+
+Use the `isFlush` prop to remove the horizontal padding from the accordion
+content. This prop does not work with `alignment="start"`.
+
+```vue
+<CvAccordion isFlush>
+  <CvAccordionItem title="Section 1">Content</CvAccordionItem>
+</CvAccordion>
+```
+
+### Accordion `size`
+
+Use the `size` prop to change the size of the accordion. Valid values are `sm`,
+`md`, and `lg`. The default size is `md`.
+
+```vue
+<CvAccordion size="sm">
+  <CvAccordionItem title="Section 1">Content</CvAccordionItem>
+</CvAccordion>
+```
+
+### AccordionItem `open`
+
+Use the `open` prop to control whether an accordion item is expanded. You can
+use `v-model:open` for two-way binding.
+
+```vue
+<script setup>
+import { ref } from 'vue';
+const isOpen = ref(false);
+</script>
+
+<template>
+  <CvAccordion>
+    <CvAccordionItem v-model:open="isOpen" title="Section 1">
+      Content
+    </CvAccordionItem>
+  </CvAccordion>
+</template>
+```
+
+### AccordionItem `disabled`
+
+Use the `disabled` prop to prevent an accordion item from being expanded. You
+can also use the `disabled` prop on the `CvAccordion` to disable all items.
+
+```vue
+<CvAccordion>
+  <CvAccordionItem title="Section 1" disabled>Content</CvAccordionItem>
+</CvAccordion>
+```
+
+## References
+
+[MDN: ARIA disclosure widget](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role#toggle_buttons)
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/carbon-design-system/carbon/edit/main/packages/web-components/src/components/accordion/accordion.mdx)
