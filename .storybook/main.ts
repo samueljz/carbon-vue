@@ -8,20 +8,17 @@ const config: StorybookConfig = {
         '../src/**/*.mdx',
         '../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
-    addons: [
-        {
-            name: '@storybook/addon-docs',
-            options: {
-                mdxPluginOptions: {
-                    mdxCompileOptions: {
-                        remarkPlugins: [remarkGfm],
-                    },
+    staticDirs: ['../public'],
+    addons: [{
+        name: '@storybook/addon-docs',
+        options: {
+            mdxPluginOptions: {
+                mdxCompileOptions: {
+                    remarkPlugins: [remarkGfm],
                 },
             },
         },
-        '@storybook/addon-essentials',
-        '@storybook/addon-links',
-    ],
+    }, '@storybook/addon-links'],
     framework: {
         name: '@storybook/vue3-vite',
         options: {},

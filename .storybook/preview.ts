@@ -1,5 +1,5 @@
-import type { Preview, StoryFn, StoryContext } from '@storybook/vue3';
-import { setup } from '@storybook/vue3';
+import type { Preview, StoryFn, StoryContext } from '@storybook/vue3-vite';
+import { setup } from '@storybook/vue3-vite';
 import { white, g10, g90, g100 } from '@carbon/themes';
 import { breakpoints } from '@carbon/layout';
 import theme from './theme.ts';
@@ -18,7 +18,7 @@ setup((app) => {
         tag.startsWith('cds-') || tag === 'sb-template-layers';
 });
 
-export const globalTypes = {
+export const globalTypes: Preview['globalTypes'] = {
     locale: {
         name: 'Locale',
         description: 'Set the localization for the storybook',
@@ -84,24 +84,27 @@ export const parameters = {
             cellSize: 8,
             opacity: 0.5,
         },
-        values: [
-            {
+        options: {
+            white: {
                 name: 'white',
                 value: white.background,
             },
-            {
+
+            g10: {
                 name: 'g10',
                 value: g10.background,
             },
-            {
+
+            g90: {
                 name: 'g90',
                 value: g90.background,
             },
-            {
+
+            g100: {
                 name: 'g100',
                 value: g100.background,
-            },
-        ],
+            }
+        },
     },
     controls: {
         expanded: true,

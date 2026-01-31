@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3-vite';
 import { CvTooltip } from './index';
 import { Information16 } from '@carbon/icons-vue';
 import type { TooltipAlignment } from '@/types';

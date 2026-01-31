@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import type { TagSize, PopoverAlignment } from '@/types';
 import { CvTag, CvDismissibleTag, CvSelectableTag, CvOperationalTag, CvTagSkeleton } from './index';
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { CvLoading } from './index';
 
 const meta: Meta<typeof CvLoading> = {

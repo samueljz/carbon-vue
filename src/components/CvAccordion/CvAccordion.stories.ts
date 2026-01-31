@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { CvAccordion, CvAccordionItem, CvAccordionSkeleton } from './index';
 import { CvButton, CvButtonSet } from '../CvButton';
 
