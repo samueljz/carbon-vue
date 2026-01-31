@@ -29,6 +29,7 @@
         "typecheck": "vue-tsc --noEmit"
     },
     "dependencies": {
+        "@carbon/icons-vue": "^10.99.1",
         "@carbon/web-components": "^2.47.0",
         "vue": "^3.4.0"
     },

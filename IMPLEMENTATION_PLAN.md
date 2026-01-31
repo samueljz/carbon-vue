@@ -353,3 +353,4 @@ npm run storybook:build
 | Notification | 4 types: Actionable, Inline, Toast, Callout - each with own stories/MDX |
 | Button | Uses camelCase: `isExpressive`, `isSelected` |
 | Toggle | Uses camelCase: `hideLabel` |
+| Icons | Integrated `@carbon/icons-vue` for stories (Tip: Button, Link, Tooltip used inline SVGs previously) |

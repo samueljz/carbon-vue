@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { CvButton, CvButtonSet, CvButtonSkeleton } from './index';
+import { Add16 } from '@carbon/icons-vue';
 
 const kindLabels = {
     primary: 'Primary button (primary)',
@@ -152,26 +153,14 @@ export const Ghost: Story = {
 
 export const IconButton: Story = {
     render: (args) => ({
-        components: { CvButton },
+        components: { CvButton, Add16 },
         setup() {
             return { args };
         },
         template: `
       <CvButton v-bind="args" tooltip-text="Icon Description">
         <template #icon>
-          <svg
-            focusable="false"
-            preserveAspectRatio="xMidYMid meet"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            aria-hidden="true"
-            width="16"
-            height="16"
-            viewBox="0 0 32 32"
-            slot="icon"
-          >
-            <path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path>
-          </svg>
+          <Add16 slot="icon" />
         </template>
       </CvButton>
     `,

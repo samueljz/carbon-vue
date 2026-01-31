@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { CvLink } from './index';
+import { Launch16 } from '@carbon/icons-vue';
 
 const sizeLabels = {
     sm: 'Small size (sm)',
@@ -87,7 +88,7 @@ export const Inline: Story = {
 
 export const PairedWithIcon: Story = {
     render: (args) => ({
-        components: { CvLink },
+        components: { CvLink, Launch16 },
         setup() {
             return { args };
         },
@@ -95,20 +96,7 @@ export const PairedWithIcon: Story = {
       <CvLink v-bind="args">
         Carbon Docs
         <template #icon>
-          <svg
-            focusable="false"
-            preserveAspectRatio="xMidYMid meet"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            aria-hidden="true"
-            slot="icon"
-          >
-            <path d="M11.8 2.8L10.8 3.8 12.2 5.3 8 5.3 8 6.7 12.2 6.7 10.8 8.2 11.8 9.2 15 6z"></path>
-            <path d="M11,8V11H5V5h3V3H5A2,2,0,0,0,3,5v6a2,2,0,0,0,2,2h6a2,2,0,0,0,2-2V8Z"></path>
-          </svg>
+          <Launch16 slot="icon" />
         </template>
       </CvLink>
     `,

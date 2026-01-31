@@ -1,5 +1,6 @@
 import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
 import { CvTooltip } from './index';
+import { Information16 } from '@carbon/icons-vue';
 import type { TooltipAlignment } from '@/types';
 import type { CvTooltipProps } from './CvTooltip.vue';
 
@@ -97,7 +98,7 @@ export const Default: Story = {
   args: defaultArgs,
   argTypes,
   render: (args) => ({
-    components: { CvTooltip },
+    components: { CvTooltip, Information16 },
     setup() {
       return { args };
     },
@@ -116,7 +117,7 @@ export const Default: Story = {
           aria-labelledby="content"
           style="border: none; background: transparent; cursor: pointer;"
         >
-          <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="3" r="1"/><path d="M9 13H7V6h2z"/></svg>
+          <Information16 />
         </button>
         <template #content>
           <cds-tooltip-content id="content">{{ args.label }}</cds-tooltip-content>
