@@ -106,7 +106,7 @@ export const Single: Story = {
         <br /><br />
         <CvCheckbox warn warn-text="Warning test goes here">Checkbox label</CvCheckbox>
         <br /><br />
-        <CvCheckbox :read-only="true">Checkbox label</CvCheckbox>
+        <CvCheckbox read-only>Checkbox label</CvCheckbox>
       </div>
     `,
     }),

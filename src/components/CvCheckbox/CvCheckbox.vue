@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import '@carbon/web-components/es/components/checkbox/index.js';
+import { ref, onUpdated, onMounted } from 'vue';
 
 export interface CvCheckboxProps {
   /**
@@ -56,7 +57,7 @@ export interface CvCheckboxProps {
   warnText?: string;
 }
 
-withDefaults(defineProps<CvCheckboxProps>(), {
+const props = withDefaults(defineProps<CvCheckboxProps>(), {
   modelValue: false,
   indeterminate: false,
   disabled: false,
@@ -71,6 +72,29 @@ const emit = defineEmits<{
   change: [event: CustomEvent];
 }>();
 
+const checkboxRef = ref<HTMLElement | null>(null);
+
+const updateAttributes = () => {
+  if (checkboxRef.value) {
+    // Set invalid attribute
+    if (props.invalid) {
+      checkboxRef.value.setAttribute('invalid', '');
+    } else {
+      checkboxRef.value.removeAttribute('invalid');
+    }
+    
+    // Set warn attribute
+    if (props.warn) {
+      checkboxRef.value.setAttribute('warn', '');
+    } else {
+      checkboxRef.value.removeAttribute('warn');
+    }
+  }
+};
+
+onMounted(updateAttributes);
+onUpdated(updateAttributes);
+
 const handleChange = (event: CustomEvent) => {
   const target = event.target as HTMLInputElement;
   emit('update:modelValue', target.checked);
@@ -80,6 +104,7 @@ const handleChange = (event: CustomEvent) => {
 
 <template>
   <cds-checkbox
+    ref="checkboxRef"
     :checked="modelValue || undefined"
     :indeterminate="indeterminate || undefined"
     :label-text="labelText"

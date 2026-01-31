@@ -3,13 +3,18 @@ import '@carbon/web-components/es/components/checkbox/index.js';
 
 export interface CvCheckboxGroupProps {
   /**
+   * fieldset `aria-labelledby`
+   */
+  ariaLabelledBy?: string;
+  /**
    * Specify the legend text
    */
   legendText?: string;
   /**
-   * Specify whether the legend is hidden
+   * Provide id for the fieldset <legend> which corresponds to the fieldset
+   * `aria-labelledby`
    */
-  legendHidden?: boolean;
+  legendId?: string;
   /**
    * Specify the helper text
    */
@@ -45,7 +50,6 @@ export interface CvCheckboxGroupProps {
 }
 
 withDefaults(defineProps<CvCheckboxGroupProps>(), {
-  legendHidden: false,
   invalid: false,
   warn: false,
   readOnly: false,
@@ -56,14 +60,15 @@ withDefaults(defineProps<CvCheckboxGroupProps>(), {
 
 <template>
   <cds-checkbox-group
+    :aria-labelledby="ariaLabelledBy"
     :legend-text="legendText"
-    :legend-hidden="legendHidden || undefined"
+    :legend-id="legendId"
     :helper-text="helperText"
     :invalid="invalid || undefined"
     :invalid-text="invalidText"
     :warn="warn || undefined"
     :warn-text="warnText"
-    :read-only="readOnly || undefined"
+    :readonly="readOnly || undefined"
     :disabled="disabled || undefined"
     :orientation="orientation"
   >
