@@ -1,0 +1,60 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as CvSelectStories from './CvSelect.stories';
+
+<Meta of={CvSelectStories} />
+
+# Select
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/select)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/select/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/select/accessibility)
+
+## Table of Contents
+
+- [Default state](#default-state)
+- [Inline](#inline)
+- [Skeleton](#skeleton)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Default state
+
+Carbon recommends that a select has an empty option selected by default.
+Depending on the use case, this default behavior can be modified to be a
+prefilled selection to the first option in the list, which is typically shown in
+alphabetical order, or the prefilled selection could be a frequent or commonly
+used option that is on the list.
+
+To get a default empty selection on your select, do not use the `placeholder`
+attribute in `CvSelect`.
+
+<Canvas of={CvSelectStories.Default} />
+
+## Inline
+
+<Canvas of={CvSelectStories.Inline} />
+
+## Skeleton
+
+<Canvas of={CvSelectStories.Skeleton} />
+
+## Component API
+
+## `CvSelect`
+
+<ArgTypes of={CvSelectStories.Default} />
+
+## `CvSelectItemGroup`
+
+<ArgTypes of={CvSelectStories.Default} include={['label', 'disabled']} />
+
+## `CvSelectItem`
+
+<ArgTypes of={CvSelectStories.Default} include={['label', 'value', 'disabled', 'selected']} />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).
