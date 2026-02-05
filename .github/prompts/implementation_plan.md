@@ -1,4 +1,13 @@
-# Carbon Vue 11 Migration - Implementation Plan
+---
+name: implementation-guidelines
+description: Strict guidelines and workflow for implementing Carbon Vue 11 components.
+---
+
+# Carbon Vue 11 Migration - Implementation Guidelines
+
+> **CONTEXT**: This document outlines the strict rules, patterns, and status for the Carbon Vue 11 migration project.
+> **INSTRUCTION**: When asked to implement or update a component, YOU MUST follow the workflow, naming conventions, and file structures defined here exactly.
+> **PRIORITY**: Feature parity with `@carbon/web-components` and exact Storybook reproduction are the top priorities.
 
 ## Project Objective
 
