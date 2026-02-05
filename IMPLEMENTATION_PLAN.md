@@ -126,7 +126,7 @@ export const Default: Story = {
 **File:** `carbon-vue/src/components/Cv{Component}/Cv{Component}.mdx`
 
 ```mdx
-import { ArgTypes, Canvas, Meta } from '@storybook/blocks';
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as {Component}Stories from './Cv{Component}.stories';
 
 <Meta of={{Component}Stories} />
