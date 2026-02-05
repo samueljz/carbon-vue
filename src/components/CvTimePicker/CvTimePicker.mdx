@@ -1,0 +1,35 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as CvTimePickerStories from './CvTimePicker.stories';
+
+<Meta of={CvTimePickerStories} />
+
+# Time Picker
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/time-picker)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/date-picker/usage#time-picker)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/date-picker/accessibility)
+
+## Table of Contents
+- [Overview](#overview)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+<Canvas of={CvTimePickerStories.Default} />
+
+## Component API
+
+## `CvTimePicker`
+<ArgTypes of={CvTimePickerStories.Default} include={['disabled', 'hideLabel', 'invalid', 'invalidText', 'labelText', 'maxLength', 'placeholder', 'readOnly', 'size', 'value', 'warning', 'warningText', 'type']} />
+
+## `CvTimePickerSelect`
+<ArgTypes of={CvTimePickerStories.Default} />
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/samueljz/carbon-vue-migration/edit/main/src/components/CvTimePicker/CvTimePicker.mdx).
