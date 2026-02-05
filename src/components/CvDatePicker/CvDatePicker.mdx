@@ -1,0 +1,54 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as CvDatePickerStories from './CvDatePicker.stories';
+import { CvDatePicker, CvDatePickerInput } from './index';
+
+<Meta of={CvDatePickerStories} />
+
+# Date picker
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/date-picker)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/date-picker/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/date-picker/accessibility)
+
+## Overview
+
+Date pickers allow users to select a single or a range of dates. Pickers are
+used to display past, present, or future dates. The kind of date (exact,
+approximate, memorable) you are requesting from the user will determine which
+picker is best to use. Each picker’s format can be customized depending on
+location or need. The `CvDatePicker` component expects a `CvDatePickerInput`
+as a child.
+
+<Canvas of={CvDatePickerStories.SingleWithCalendar} />
+
+### Simple date picker
+
+The simple date input provides the user with only a text field in which they can
+manually input a date. It allows dates to be entered without adding unnecessary
+interactions that come with the calendar menu or a dropdown.
+
+<Canvas of={CvDatePickerStories.Default} />
+
+### Range date picker
+
+Calendar pickers default to showing today’s date when opened and only one month
+is shown at a time. Calendar pickers allow users to navigate through months and
+years, however they work best when used for recent or near future dates.
+
+<Canvas of={CvDatePickerStories.RangeWithCalendar} />
+
+### Skeleton state
+
+<Canvas of={CvDatePickerStories.Skeleton} />
+
+## Component API
+
+## `CvDatePicker`
+
+<ArgTypes of={CvDatePickerStories.Default} include={['allowInput', 'closeOnSelect', 'dateFormat', 'disabled', 'maxDate', 'minDate', 'readonly']} />
+
+## `CvDatePickerInput`
+
+<ArgTypes of={CvDatePickerStories.Default} include={['placeholder', 'size', 'invalid', 'invalidText', 'warn', 'warnText', 'short', 'helperText', 'labelText']} />

@@ -97,3 +97,32 @@ export type LoadingType = 'regular' | 'small';
 
 // Common types
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+// DatePicker types
+/**
+ * Date picker input kinds.
+ */
+export enum DATE_PICKER_INPUT_KIND {
+    /**
+     * Simple variant - comes without the calendar dropdown.
+     */
+    SIMPLE = 'simple',
+
+    /**
+     * Single variant - single date selection with calendar.
+     */
+    SINGLE = 'single',
+
+    /**
+     * Start date for the range variant.
+     */
+    FROM = 'from',
+
+    /**
+     * End date for the range variant.
+     */
+    TO = 'to',
+}
+
+export type DatePickerInputKind = `${DATE_PICKER_INPUT_KIND}`;
+
