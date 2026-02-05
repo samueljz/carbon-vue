@@ -310,7 +310,7 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
 | Text Area | ⬜ | ⬜ | ⬜ | `cds-textarea` |
 | Date Picker | ⬜ | ⬜ | ⬜ | `cds-date-picker` (complex) |
 | Time Picker | ⬜ | ⬜ | ⬜ | `cds-time-picker` |
-| Search | ⬜ | ⬜ | ⬜ | `cds-search` |
+| Search | ✅ | ✅ | ✅ | `cds-search` |
 | Password Input | ⬜ | ⬜ | ⬜ | `cds-password-input` |
 | File Uploader | ⬜ | ⬜ | ⬜ | `cds-file-uploader` (complex) |
 | Slider | ⬜ | ⬜ | ⬜ | `cds-slider`, `cds-slider-input` |
