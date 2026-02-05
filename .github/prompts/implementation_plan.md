@@ -304,9 +304,9 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
 
 | Component | Wrapper | Stories | MDX | Web Component |
 |-----------|---------|---------|-----|---------------|
-| Radio Button | ⬜ | ⬜ | ⬜ | `cds-radio-button`, `cds-radio-button-group` |
-| Select | ⬜ | ⬜ | ⬜ | `cds-select`, `cds-select-item` |
-| Number Input | ⬜ | ⬜ | ⬜ | `cds-number-input` |
+| Radio Button | ✅ | ✅ | ✅ | `cds-radio-button`, `cds-radio-button-group` |
+| Select | ✅ | ✅ | ✅ | `cds-select`, `cds-select-item` |
+| Number Input | ✅ | ✅ | ✅ | `cds-number-input` |
 | Text Area | ⬜ | ⬜ | ⬜ | `cds-textarea` |
 | Date Picker | ⬜ | ⬜ | ⬜ | `cds-date-picker` (complex) |
 | Time Picker | ⬜ | ⬜ | ⬜ | `cds-time-picker` |
@@ -427,3 +427,6 @@ npm run storybook:build
 | Button | Uses camelCase: `isExpressive`, `isSelected` |
 | Toggle | Uses camelCase: `hideLabel` |
 | Icons | Integrated `@carbon/icons-vue` for stories (Tip: Button, Link, Tooltip used inline SVGs previously) |
+| Radio Button | labelText/hideLabel properties need correct binding to work |
+| Select | readonly prop interaction with Storybook controls |
+| Checkbox | `invalid` and `warn` require attribute binding (no colon) due to CSS selectors |
