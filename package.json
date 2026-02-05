@@ -40,7 +40,7 @@
         "@carbon/themes": "^11.50.0",
         "@storybook/addon-docs": "^10.2.3",
         "@storybook/addon-links": "^10.2.3",
-        "@storybook/blocks": "^8.5.0",
+
         "@storybook/vue3": "^10.2.3",
         "@storybook/vue3-vite": "^10.2.3",
         "@types/carbon__layout": "^0.0.3",
