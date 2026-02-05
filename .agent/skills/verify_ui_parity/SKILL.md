@@ -5,7 +5,7 @@ description: Visually compares Carbon Vue components against the reference Carbo
 
 # UI Parity Verification Skill
 
-This skill is designed to verify that the implementation of `carbon-vue` components achieves exact visual and functional parity with the reference `@carbon/web-components`.
+This skill is designed to verify that the implementation of `carbon-vue` components achieves exact visual and functional parity with the reference to `carbon/packages/web-components` within the workspace.
 
 ## Workflow
 
