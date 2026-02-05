@@ -2,6 +2,7 @@ import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
 import { CvDatePicker, CvDatePickerInput, type DatePickerInputKind } from './index';
 import type { CvDatePickerProps } from './CvDatePicker.vue';
 import type { CvDatePickerInputProps } from './CvDatePickerInput.vue';
+import { CvLayer } from '../CvLayer';
 
 type BaseStoryArgs = CvDatePickerProps &
   CvDatePickerInputProps & {
@@ -252,50 +253,61 @@ export const RangeWithCalendarWithLayer: RangeStory = {
     },
   },
   render: (args: any) => ({
-    components: { CvDatePicker, CvDatePickerInput },
+    components: { CvDatePicker, CvDatePickerInput, CvLayer },
     setup() {
-      import('../../../.storybook/templates/with-layer');
       return { args };
     },
     template: `
-      <sb-template-layers>
-        <CvDatePicker
-          :allow-input="args.allowInput"
-          :close-on-select="args.closeOnSelect"
-          :date-format="args.dateFormat"
-          :disabled="args.disabled"
-          :max-date="args.maxDate"
-          :min-date="args.minDate"
-          :readonly="args.readonly"
-        >
-          <CvDatePickerInput
-            kind="from"
-            label-text="Start date"
-            :placeholder="args.placeholder"
-            :size="args.size"
-            :invalid="args.invalid"
-            :invalid-text="args.invalidText"
-            :warn="args.warn"
-            :warn-text="args.warnText"
-            :short="args.short"
-            :disabled="args.disabled"
-            :readonly="args.readonly"
-          />
-          <CvDatePickerInput
-            kind="to"
-            label-text="End date"
-            :placeholder="args.placeholder"
-            :size="args.size"
-            :invalid="args.invalid"
-            :invalid-text="args.invalidText"
-            :warn="args.warn"
-            :warn-text="args.warnText"
-            :short="args.short"
-            :disabled="args.disabled"
-            :readonly="args.readonly"
-          />
-        </CvDatePicker>
-      </sb-template-layers>
+      <CvLayer with-background>
+        <div class="cds--with-layer">
+          <div class="cds--with-layer__background">
+            <div class="cds--with-layer__label">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+              </svg>
+              $background
+            </div>
+            <div class="cds--with-layer__content">
+              <CvDatePicker v-bind="args">
+                <CvDatePickerInput kind="from" label-text="Start date" :size="args.size" />
+                <CvDatePickerInput kind="to" label-text="End date" :size="args.size" />
+              </CvDatePicker>
+              <CvLayer with-background>
+                <div class="cds--with-layer__layer">
+                  <div class="cds--with-layer__label">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                    </svg>
+                    $layer-01
+                  </div>
+                  <div class="cds--with-layer__content">
+                    <CvDatePicker v-bind="args">
+                      <CvDatePickerInput kind="from" label-text="Start date" :size="args.size" />
+                      <CvDatePickerInput kind="to" label-text="End date" :size="args.size" />
+                    </CvDatePicker>
+                    <CvLayer with-background>
+                      <div class="cds--with-layer__layer">
+                        <div class="cds--with-layer__label">
+                          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                          </svg>
+                          $layer-02
+                        </div>
+                        <div class="cds--with-layer__content">
+                          <CvDatePicker v-bind="args">
+                            <CvDatePickerInput kind="from" label-text="Start date" :size="args.size" />
+                            <CvDatePickerInput kind="to" label-text="End date" :size="args.size" />
+                          </CvDatePicker>
+                        </div>
+                      </div>
+                    </CvLayer>
+                  </div>
+                </div>
+              </CvLayer>
+            </div>
+          </div>
+        </div>
+      </CvLayer>
     `,
   }),
 };
@@ -338,37 +350,58 @@ export const SimpleWithLayer: StrictStory = {
   args: { ...defaultArgs, kind: 'simple' },
   argTypes: controls,
   render: (args: any) => ({
-    components: { CvDatePicker, CvDatePickerInput },
+    components: { CvDatePicker, CvDatePickerInput, CvLayer },
     setup() {
-      import('../../../.storybook/templates/with-layer');
       return { args };
     },
     template: `
-      <sb-template-layers>
-        <CvDatePicker
-          :allow-input="args.allowInput"
-          :close-on-select="args.closeOnSelect"
-          :date-format="args.dateFormat"
-          :disabled="args.disabled"
-          :max-date="args.maxDate"
-          :min-date="args.minDate"
-          :readonly="args.readonly"
-        >
-          <CvDatePickerInput
-            kind="simple"
-            label-text="Date Picker label"
-            :placeholder="args.placeholder"
-            :size="args.size"
-            :invalid="args.invalid"
-            :invalid-text="args.invalidText"
-            :warn="args.warn"
-            :warn-text="args.warnText"
-             :short="args.short"
-             :disabled="args.disabled"
-             :readonly="args.readonly"
-          />
-        </CvDatePicker>
-      </sb-template-layers>
+      <CvLayer with-background>
+        <div class="cds--with-layer">
+          <div class="cds--with-layer__background">
+            <div class="cds--with-layer__label">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+              </svg>
+              $background
+            </div>
+            <div class="cds--with-layer__content">
+              <CvDatePicker v-bind="args">
+                <CvDatePickerInput kind="simple" label-text="Date Picker label" :size="args.size" />
+              </CvDatePicker>
+              <CvLayer with-background>
+                <div class="cds--with-layer__layer">
+                  <div class="cds--with-layer__label">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                    </svg>
+                    $layer-01
+                  </div>
+                  <div class="cds--with-layer__content">
+                    <CvDatePicker v-bind="args">
+                      <CvDatePickerInput kind="simple" label-text="Date Picker label" :size="args.size" />
+                    </CvDatePicker>
+                    <CvLayer with-background>
+                      <div class="cds--with-layer__layer">
+                        <div class="cds--with-layer__label">
+                          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                          </svg>
+                          $layer-02
+                        </div>
+                        <div class="cds--with-layer__content">
+                          <CvDatePicker v-bind="args">
+                            <CvDatePickerInput kind="simple" label-text="Date Picker label" :size="args.size" />
+                          </CvDatePicker>
+                        </div>
+                      </div>
+                    </CvLayer>
+                  </div>
+                </div>
+              </CvLayer>
+            </div>
+          </div>
+        </div>
+      </CvLayer>
     `,
   }),
 };
@@ -382,35 +415,58 @@ export const SingleWithCalendarWithLayer: StrictStory = {
     },
   },
   render: (args: any) => ({
-    components: { CvDatePicker, CvDatePickerInput },
+    components: { CvDatePicker, CvDatePickerInput, CvLayer },
     setup() {
-      import('../../../.storybook/templates/with-layer');
       return { args };
     },
     template: `
-      <sb-template-layers>
-        <CvDatePicker
-          :allow-input="args.allowInput"
-          :close-on-select="args.closeOnSelect"
-          :date-format="args.dateFormat"
-          :disabled="args.disabled"
-          :max-date="args.maxDate"
-          :min-date="args.minDate"
-          :readonly="args.readonly"
-        >
-          <CvDatePickerInput
-            kind="single"
-            label-text="Date Picker label"
-            :placeholder="args.placeholder"
-            :size="args.size"
-            :invalid="args.invalid"
-            :invalid-text="args.invalidText"
-            :warn="args.warn"
-            :warn-text="args.warnText"
-             :short="args.short"
-          />
-        </CvDatePicker>
-      </sb-template-layers>
+      <CvLayer with-background>
+        <div class="cds--with-layer">
+          <div class="cds--with-layer__background">
+            <div class="cds--with-layer__label">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0,.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+              </svg>
+              $background
+            </div>
+            <div class="cds--with-layer__content">
+              <CvDatePicker v-bind="args">
+                <CvDatePickerInput kind="single" label-text="Date Picker label" :size="args.size" />
+              </CvDatePicker>
+              <CvLayer with-background>
+                <div class="cds--with-layer__layer">
+                  <div class="cds--with-layer__label">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                    </svg>
+                    $layer-01
+                  </div>
+                  <div class="cds--with-layer__content">
+                    <CvDatePicker v-bind="args">
+                      <CvDatePickerInput kind="single" label-text="Date Picker label" :size="args.size" />
+                    </CvDatePicker>
+                    <CvLayer with-background>
+                      <div class="cds--with-layer__layer">
+                        <div class="cds--with-layer__label">
+                          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                          </svg>
+                          $layer-02
+                        </div>
+                        <div class="cds--with-layer__content">
+                          <CvDatePicker v-bind="args">
+                            <CvDatePickerInput kind="single" label-text="Date Picker label" :size="args.size" />
+                          </CvDatePicker>
+                        </div>
+                      </div>
+                    </CvLayer>
+                  </div>
+                </div>
+              </CvLayer>
+            </div>
+          </div>
+        </div>
+      </CvLayer>
     `,
   }),
 };

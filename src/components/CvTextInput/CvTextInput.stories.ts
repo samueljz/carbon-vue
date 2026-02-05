@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { CvTextInput, CvTextInputSkeleton } from './index';
+import { CvLayer } from '../CvLayer';
 
 const sizeLabels = {
     sm: 'Small (sm)',
@@ -169,17 +170,59 @@ export const Skeleton: Story = {
 
 export const WithLayer: Story = {
     render: (args) => ({
-        components: { CvTextInput },
+        components: { CvTextInput, CvLayer },
         setup() {
             const value = ref('');
             return { args, value };
         },
         template: `
-      <sb-template-layers>
-        <div style="width: 300px;">
-          <CvTextInput v-bind="args" v-model="value" />
+      <CvLayer with-background>
+        <div class="cds--with-layer">
+          <div class="cds--with-layer__background">
+            <div class="cds--with-layer__label">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0,.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+              </svg>
+              $background
+            </div>
+            <div class="cds--with-layer__content">
+              <div style="width: 300px;">
+                <CvTextInput v-bind="args" v-model="value" />
+              </div>
+              <CvLayer with-background>
+                <div class="cds--with-layer__layer">
+                  <div class="cds--with-layer__label">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0,.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                    </svg>
+                    $layer-01
+                  </div>
+                  <div class="cds--with-layer__content">
+                    <div style="width: 300px;">
+                      <CvTextInput v-bind="args" v-model="value" />
+                    </div>
+                    <CvLayer with-background>
+                      <div class="cds--with-layer__layer">
+                        <div class="cds--with-layer__label">
+                          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                          </svg>
+                          $layer-02
+                        </div>
+                        <div class="cds--with-layer__content">
+                          <div style="width: 300px;">
+                            <CvTextInput v-bind="args" v-model="value" />
+                          </div>
+                        </div>
+                      </div>
+                    </CvLayer>
+                  </div>
+                </div>
+              </CvLayer>
+            </div>
+          </div>
         </div>
-      </sb-template-layers>
+      </CvLayer>
     `,
     }),
 };

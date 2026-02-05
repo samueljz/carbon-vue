@@ -8,14 +8,12 @@ import theme from './theme.ts';
 import '@carbon/styles/css/styles.css';
 import '@carbon/web-components/es/components/button/index.js';
 import './_container.scss';
-
-// Import the with-layer template
-import './templates/with-layer';
+import './templates/with-layer.scss';
 
 // Configure Vue to recognize custom elements
 setup((app) => {
     app.config.compilerOptions.isCustomElement = (tag) =>
-        tag.startsWith('cds-') || tag === 'sb-template-layers';
+        tag.startsWith('cds-');
 });
 
 export const globalTypes: Preview['globalTypes'] = {

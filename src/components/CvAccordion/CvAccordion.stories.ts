@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { CvAccordion, CvAccordionItem, CvAccordionSkeleton } from './index';
 import { CvButton, CvButtonSet } from '../CvButton';
+import { CvLayer } from '../CvLayer';
 
 const sizeLabels = {
   sm: 'Small size (sm)',
@@ -171,39 +172,65 @@ export const Skeleton: Story = {
 
 export const WithLayer: Story = {
   render: (args) => ({
-    components: { CvAccordion, CvAccordionItem },
+    components: { CvAccordion, CvAccordionItem, CvLayer },
     setup() {
       return { args };
     },
     template: `
-      <sb-template-layers>
-        <CvAccordion v-bind="args">
-          <CvAccordionItem title="Section 1 title">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </CvAccordionItem>
-          <CvAccordionItem title="Section 2 title">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </CvAccordionItem>
-          <CvAccordionItem title="Section 3 title">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </CvAccordionItem>
-          <CvAccordionItem title="Section 4 title">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </CvAccordionItem>
-        </CvAccordion>
-      </sb-template-layers>
+      <CvLayer with-background>
+        <div class="cds--with-layer">
+          <div class="cds--with-layer__background">
+            <div class="cds--with-layer__label">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+              </svg>
+              $background
+            </div>
+            <div class="cds--with-layer__content">
+              <CvAccordion v-bind="args">
+                <CvAccordionItem title="Section 1 title">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </CvAccordionItem>
+              </CvAccordion>
+              <CvLayer with-background>
+                <div class="cds--with-layer__layer">
+                  <div class="cds--with-layer__label">
+                    <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0-.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0,.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                    </svg>
+                    $layer-01
+                  </div>
+                  <div class="cds--with-layer__content">
+                    <CvAccordion v-bind="args">
+                      <CvAccordionItem title="Section 1 title">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </CvAccordionItem>
+                    </CvAccordion>
+                    <CvLayer with-background>
+                      <div class="cds--with-layer__layer">
+                        <div class="cds--with-layer__label">
+                          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M28.5039,11.999l-12-6.99a1,1,0,0,0-1.008,0l-12,6.99a1,1,0,0,0-.496.865v8.293a1,1,0,0,0,.5.865l12,6.99a1,1,0,0,0,1.008,0l12-6.99a1,1,0,0,0-.496-.865V12.864A1,1,0,0,0,28.5039,11.999ZM16,7.031,25.7813,12.726,16,18.422,6.2188,12.726Zm11,13.541-10,5.823V19.289l10-5.823Z"/>
+                          </svg>
+                          $layer-02
+                        </div>
+                        <div class="cds--with-layer__content">
+                          <CvAccordion v-bind="args">
+                            <CvAccordionItem title="Section 1 title">
+                              Lorem ipsum dolor sit amet.
+                            </CvAccordionItem>
+                          </CvAccordion>
+                        </div>
+                      </div>
+                    </CvLayer>
+                  </div>
+                </div>
+              </CvLayer>
+            </div>
+          </div>
+        </div>
+      </CvLayer>
     `,
   }),
 };
