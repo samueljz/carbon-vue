@@ -3,13 +3,16 @@ import { CvDatePicker, CvDatePickerInput, type DatePickerInputKind } from './ind
 import type { CvDatePickerProps } from './CvDatePicker.vue';
 import type { CvDatePickerInputProps } from './CvDatePickerInput.vue';
 
-type StoryArgs = CvDatePickerProps &
-  Omit<CvDatePickerInputProps, 'kind'> & {
-    kind?: DatePickerInputKind | 'range';
+type BaseStoryArgs = CvDatePickerProps &
+  CvDatePickerInputProps & {
     helperText?: string;
   };
 
-const defaultArgs: StoryArgs = {
+type RangeStoryArgs = Omit<BaseStoryArgs, 'kind'> & {
+  kind?: DatePickerInputKind | 'range';
+};
+
+const defaultArgs: BaseStoryArgs = {
   dateFormat: 'm/d/Y',
   disabled: false,
   allowInput: true,
@@ -26,6 +29,10 @@ const defaultArgs: StoryArgs = {
   placeholder: 'mm/dd/yyyy',
   size: 'md',
   kind: 'single',
+};
+
+const defaultRangeArgs: RangeStoryArgs = {
+  ...defaultArgs,
 };
 
 const controls: ArgTypes = {
@@ -87,12 +94,13 @@ const meta: Meta<typeof CvDatePicker> = {
 
 export default meta;
 
-// StoryArgs defined at top
+// BaseStoryArgs and RangeStoryArgs defined at top
 
-type Story = StoryObj<StoryArgs>;
+type StrictStory = StoryObj<BaseStoryArgs>;
+type RangeStory = StoryObj<RangeStoryArgs>;
 
-export const Default: Story = {
-  args: defaultArgs,
+export const Default: RangeStory = {
+  args: defaultRangeArgs,
   argTypes: {
     ...controls,
     kind: {
@@ -149,7 +157,7 @@ export const Default: Story = {
   }),
 };
 
-export const SingleWithCalendar: Story = {
+export const SingleWithCalendar: StrictStory = {
   args: { ...defaultArgs, kind: 'single' },
   argTypes: {
     ...controls,
@@ -186,8 +194,8 @@ export const SingleWithCalendar: Story = {
   }),
 };
 
-export const RangeWithCalendar: Story = {
-  args: { ...defaultArgs, kind: 'range' },
+export const RangeWithCalendar: RangeStory = {
+  args: { ...defaultRangeArgs, kind: 'range' },
   argTypes: {
     ...controls,
     kind: {
@@ -235,7 +243,64 @@ export const RangeWithCalendar: Story = {
 };
 
 
-export const Simple: Story = {
+export const RangeWithCalendarWithLayer: RangeStory = {
+  args: { ...defaultRangeArgs, kind: 'range' },
+  argTypes: {
+    ...controls,
+    kind: {
+      control: false,
+    },
+  },
+  render: (args: any) => ({
+    components: { CvDatePicker, CvDatePickerInput },
+    setup() {
+      import('../../../.storybook/templates/with-layer');
+      return { args };
+    },
+    template: `
+      <sb-template-layers>
+        <CvDatePicker
+          :allow-input="args.allowInput"
+          :close-on-select="args.closeOnSelect"
+          :date-format="args.dateFormat"
+          :disabled="args.disabled"
+          :max-date="args.maxDate"
+          :min-date="args.minDate"
+          :readonly="args.readonly"
+        >
+          <CvDatePickerInput
+            kind="from"
+            label-text="Start date"
+            :placeholder="args.placeholder"
+            :size="args.size"
+            :invalid="args.invalid"
+            :invalid-text="args.invalidText"
+            :warn="args.warn"
+            :warn-text="args.warnText"
+            :short="args.short"
+            :disabled="args.disabled"
+            :readonly="args.readonly"
+          />
+          <CvDatePickerInput
+            kind="to"
+            label-text="End date"
+            :placeholder="args.placeholder"
+            :size="args.size"
+            :invalid="args.invalid"
+            :invalid-text="args.invalidText"
+            :warn="args.warn"
+            :warn-text="args.warnText"
+            :short="args.short"
+            :disabled="args.disabled"
+            :readonly="args.readonly"
+          />
+        </CvDatePicker>
+      </sb-template-layers>
+    `,
+  }),
+};
+
+export const Simple: StrictStory = {
   args: { ...defaultArgs, kind: 'simple' },
   argTypes: controls,
   render: (args: any) => ({
@@ -269,11 +334,106 @@ export const Simple: Story = {
   }),
 };
 
-export const Skeleton: Story = {
-  render: () => ({
+export const SimpleWithLayer: StrictStory = {
+  args: { ...defaultArgs, kind: 'simple' },
+  argTypes: controls,
+  render: (args: any) => ({
+    components: { CvDatePicker, CvDatePickerInput },
+    setup() {
+      import('../../../.storybook/templates/with-layer');
+      return { args };
+    },
+    template: `
+      <sb-template-layers>
+        <CvDatePicker
+          :allow-input="args.allowInput"
+          :close-on-select="args.closeOnSelect"
+          :date-format="args.dateFormat"
+          :disabled="args.disabled"
+          :max-date="args.maxDate"
+          :min-date="args.minDate"
+          :readonly="args.readonly"
+        >
+          <CvDatePickerInput
+            kind="simple"
+            label-text="Date Picker label"
+            :placeholder="args.placeholder"
+            :size="args.size"
+            :invalid="args.invalid"
+            :invalid-text="args.invalidText"
+            :warn="args.warn"
+            :warn-text="args.warnText"
+             :short="args.short"
+             :disabled="args.disabled"
+             :readonly="args.readonly"
+          />
+        </CvDatePicker>
+      </sb-template-layers>
+    `,
+  }),
+};
+
+export const SingleWithCalendarWithLayer: StrictStory = {
+  args: { ...defaultArgs, kind: 'single' },
+  argTypes: {
+    ...controls,
+    kind: {
+      control: false,
+    },
+  },
+  render: (args: any) => ({
+    components: { CvDatePicker, CvDatePickerInput },
+    setup() {
+      import('../../../.storybook/templates/with-layer');
+      return { args };
+    },
+    template: `
+      <sb-template-layers>
+        <CvDatePicker
+          :allow-input="args.allowInput"
+          :close-on-select="args.closeOnSelect"
+          :date-format="args.dateFormat"
+          :disabled="args.disabled"
+          :max-date="args.maxDate"
+          :min-date="args.minDate"
+          :readonly="args.readonly"
+        >
+          <CvDatePickerInput
+            kind="single"
+            label-text="Date Picker label"
+            :placeholder="args.placeholder"
+            :size="args.size"
+            :invalid="args.invalid"
+            :invalid-text="args.invalidText"
+            :warn="args.warn"
+            :warn-text="args.warnText"
+             :short="args.short"
+          />
+        </CvDatePicker>
+      </sb-template-layers>
+    `,
+  }),
+};
+
+const skeletonControls = {
+  hideLabel: {
+    control: 'boolean',
+    description: 'Specify whether the label should be hidden, or not',
+  },
+  range: {
+    control: 'boolean',
+    description: 'Specify whether the skeleton should be of range date picker.',
+  },
+};
+
+export const Skeleton: StoryObj<any> = {
+  args: { hideLabel: false, range: true },
+  argTypes: skeletonControls,
+  render: (args: any) => ({
     setup() {
       import('@carbon/web-components/es/components/date-picker/date-picker-input-skeleton.js');
+      return { args };
     },
-    template: `<cds-date-picker-input-skeleton></cds-date-picker-input-skeleton>`,
+    template: `<cds-date-picker-input-skeleton :hide-label="args.hideLabel" :range="args.range"></cds-date-picker-input-skeleton>`,
   }),
 };
