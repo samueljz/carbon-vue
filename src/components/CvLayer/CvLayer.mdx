@@ -1,0 +1,90 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as LayerStories from './CvLayer.stories';
+
+<Meta of={LayerStories} />
+
+# Layer
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/layer)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Setting a custom level](#setting-a-custom-level)
+- [With background](#with-background)
+- [Get the current layer](#get-the-current-layer)
+- [Component API](#component-api)
+- [Feedback](#feedback)
+
+## Overview
+
+The `CvLayer` component is used to render components on different layers. Each
+layer has a specific set of token values associated with it. You can use these
+tokens directly, or use contextual tokens from our styles package like `$layer`
+or `$field`.
+
+<Canvas of={LayerStories.Default} />
+
+The layer component accepts child elements. Each child of a layer component is
+rendered using the layer tokens at that layer. Layer components can be nested
+indefinitely, but the token sets typically end after 3 layers.
+
+```html
+<CvLayer>
+  <div>Test component</div>
+  <CvLayer>
+    <div>Test component</div>
+    <CvLayer>
+      <div>Test component</div>
+    </CvLayer>
+  </CvLayer>
+</CvLayer>
+```
+
+## With Background
+
+The layer component updates layer tokens at each level and theme. When you add
+the `with-background` attribute, it automatically sets a background color using
+the `$layer-background` token. Without it, you can manually set the background
+with `background-color: $layer-background`.
+
+<Canvas of={LayerStories.WithBackground} />
+
+## Setting a custom level
+
+You can override the `level` of a layer if you would like to change the
+presentation of a layer in your application. This is particularly helpful if you
+would like to reset the layer level back to `0` or if you want to make sure a
+part of a page always renders in a certain level.
+
+To do this, you can use the `level` prop:
+
+<Canvas of={LayerStories.CustomLevel} />
+
+## Get the current layer
+
+If you are building a component and would like to know what layer the component
+resides within, you can listen to the `cds-use-layer` custom event.
+
+This event returns a custom event with details of current element, as well as
+its layer:
+
+```javascript
+const handleUseLayer = (event) => {
+  const { layer, level } = event.detail;
+  layer.querySelector('.example-layer-test-component.use-layer').textContent =
+    `The current layer level is: ${level + 1}`;
+};
+```
+
+<Canvas of={LayerStories.UseLayer} />
+
+## Component API
+
+<ArgTypes of={LayerStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback, asking questions on Slack,
+or updating this file on
+[GitHub](https://github.com/samueljz/carbon-vue-migration/edit/main/src/components/CvLayer/CvLayer.mdx).
