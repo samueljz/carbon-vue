@@ -349,6 +349,7 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
 | Side Nav | ⬜ | ⬜ | ⬜ | `cds-side-nav` |
 | Grid | ⬜ | ⬜ | ⬜ | `cds-grid`, `cds-row`, `cds-column` |
 | Stack | ⬜ | ⬜ | ⬜ | `cds-stack` |
+| Layer | ⬜ | ⬜ | ⬜ | `cds-layer` |
 
 ---
 
