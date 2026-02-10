@@ -300,16 +300,16 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
 
 ---
 
-### Phase 2: Form Components 🔄 NEXT
+### Phase 2: Form Components ✅ COMPLETED
 
 | Component | Wrapper | Stories | MDX | Web Component |
 |-----------|---------|---------|-----|---------------|
 | Radio Button | ✅ | ✅ | ✅ | `cds-radio-button`, `cds-radio-button-group` |
 | Select | ✅ | ✅ | ✅ | `cds-select`, `cds-select-item` |
 | Number Input | ✅ | ✅ | ✅ | `cds-number-input` |
-| Text Area | ⬜ | ⬜ | ⬜ | `cds-textarea` |
-| Date Picker | ⬜ | ⬜ | ⬜ | `cds-date-picker` (complex) |
-| Time Picker | ⬜ | ⬜ | ⬜ | `cds-time-picker` |
+| Text Area | ✅ | ✅ | ✅ | `cds-textarea` |
+| Date Picker | ✅ | ✅ | ✅ | `cds-date-picker` (complex) |
+| Time Picker | ✅ | ✅ | ✅ | `cds-time-picker` |
 | Search | ✅ | ✅ | ✅ | `cds-search` |
 | Password Input | ⬜ | ⬜ | ⬜ | `cds-password-input` |
 | File Uploader | ⬜ | ⬜ | ⬜ | `cds-file-uploader` (complex) |
@@ -341,7 +341,7 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
 
 ---
 
-### Phase 5: UI Shell & Layout
+### Phase 5: UI Shell & Layout 🔄 IN PROGRESS
 
 | Component | Wrapper | Stories | MDX | Web Component |
 |-----------|---------|---------|-----|---------------|
@@ -349,7 +349,7 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
 | Side Nav | ⬜ | ⬜ | ⬜ | `cds-side-nav` |
 | Grid | ⬜ | ⬜ | ⬜ | `cds-grid`, `cds-row`, `cds-column` |
 | Stack | ⬜ | ⬜ | ⬜ | `cds-stack` |
-| Layer | ⬜ | ⬜ | ⬜ | `cds-layer` |
+| Layer | ✅ | ✅ | ✅ | `cds-layer` |
 
 ---
 
@@ -443,3 +443,8 @@ Visually compares Carbon Vue components against the reference Carbon Web Compone
 | Radio Button | labelText/hideLabel properties need correct binding to work |
 | Select | readonly prop interaction with Storybook controls |
 | Checkbox | `invalid` and `warn` require attribute binding (no colon) due to CSS selectors |
+| Text Area | Label visibility requires correct boolean attribute binding |
+| Date Picker | Complex component with range support, requires custom type handling for stories |
+| Time Picker | AM/PM and Timezone dropdowns need proper option handling |
+| Search | Multiple story variants for different use cases |
+| Layer | Layout component for managing design tokens across nested contexts |
