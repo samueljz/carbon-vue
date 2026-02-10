@@ -1,15 +1,13 @@
 import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as LoadingStories from './CvLoading.stories';
+import { ComponentLinks } from '../../../docs/ComponentLinks.mdx';
+import { Feedback } from '../../../docs/Feedback.mdx';
 
 <Meta of={LoadingStories} />
 
 # Loading
 
-[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/loading)
-&nbsp;|&nbsp;
-[Usage guidelines](https://www.carbondesignsystem.com/components/loading/usage)
-&nbsp;|&nbsp;
-[Accessibility](https://www.carbondesignsystem.com/components/loading/accessibility)
+<ComponentLinks componentName="loading" />
 
 ## Table of Contents
 
@@ -28,8 +26,4 @@ They notify to the user that their request is being processed.
 
 <ArgTypes of={LoadingStories} />
 
-## Feedback
-
-Help us improve this component by providing feedback, asking questions on Slack,
-or updating this file on
-[GitHub](https://github.com/samueljz/carbon-vue-migration/edit/main/src/components/CvLoading/CvLoading.mdx).
+<Feedback componentPath="CvLoading/CvLoading.mdx" />

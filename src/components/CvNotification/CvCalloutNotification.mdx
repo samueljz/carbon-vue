@@ -1,15 +1,13 @@
 import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as CalloutNotificationStories from './CvCalloutNotification.stories';
+import { ComponentLinks } from '../../../docs/ComponentLinks.mdx';
+import { Feedback } from '../../../docs/Feedback.mdx';
 
 <Meta of={CalloutNotificationStories} />
 
 # Callout Notification
 
-[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/notification)
-&nbsp;|&nbsp;
-[Usage guidelines](https://www.carbondesignsystem.com/components/notification/usage)
-&nbsp;|&nbsp;
-[Accessibility](https://www.carbondesignsystem.com/components/notification/accessibility)
+<ComponentLinks componentName="notification" />
 
 ## Table of Contents
 
@@ -46,8 +44,4 @@ an `aria-describedby` on the interactive element with a value that matches the
 
 <ArgTypes of={CalloutNotificationStories} />
 
-## Feedback
-
-Help us improve this component by providing feedback, asking questions on Slack,
-or updating this file on
-[GitHub](https://github.com/samueljz/carbon-vue-migration/edit/main/src/components/CvNotification/CvCalloutNotification.mdx).
+<Feedback componentPath="CvNotification/CvCalloutNotification.mdx" />

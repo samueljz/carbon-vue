@@ -1,16 +1,14 @@
 import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as CvDatePickerStories from './CvDatePicker.stories';
 import { CvDatePicker, CvDatePickerInput } from './index';
+import { ComponentLinks } from '../../../docs/ComponentLinks.mdx';
+import { Feedback } from '../../../docs/Feedback.mdx';
 
 <Meta of={CvDatePickerStories} />
 
 # Date picker
 
-[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/date-picker)
-&nbsp;|&nbsp;
-[Usage guidelines](https://www.carbondesignsystem.com/components/date-picker/usage)
-&nbsp;|&nbsp;
-[Accessibility](https://www.carbondesignsystem.com/components/date-picker/accessibility)
+<ComponentLinks componentName="date-picker" />
 
 ## Table of Contents
 
@@ -23,7 +21,7 @@ import { CvDatePicker, CvDatePickerInput } from './index';
 Date pickers allow users to select a single or a range of dates. Pickers are
 used to display past, present, or future dates. The kind of date (exact,
 approximate, memorable) you are requesting from the user will determine which
-picker is best to use. Each picker’s format can be customized depending on
+picker is best to use. Each picker's format can be customized depending on
 location or need. The `CvDatePicker` component expects a `CvDatePickerInput`
 as a child.
 
@@ -39,7 +37,7 @@ interactions that come with the calendar menu or a dropdown.
 
 ### Range date picker
 
-Calendar pickers default to showing today’s date when opened and only one month
+Calendar pickers default to showing today's date when opened and only one month
 is shown at a time. Calendar pickers allow users to navigate through months and
 years, however they work best when used for recent or near future dates.
 
@@ -59,8 +57,4 @@ years, however they work best when used for recent or near future dates.
 
 <ArgTypes of={CvDatePickerStories.Default} include={['placeholder', 'size', 'invalid', 'invalidText', 'warn', 'warnText', 'short', 'helperText', 'labelText']} />
 
-## Feedback
-
-Help us improve this component by providing feedback, asking questions on Slack,
-or updating this file on
-[GitHub](https://github.com/samueljz/carbon-vue-migration/tree/main/src/components/CvDatePicker/CvDatePicker.mdx).
+<Feedback componentPath="CvDatePicker/CvDatePicker.mdx" />

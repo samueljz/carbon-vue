@@ -1,15 +1,13 @@
 import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as TextInputStories from './CvTextInput.stories';
+import { ComponentLinks } from '../../../docs/ComponentLinks.mdx';
+import { Feedback } from '../../../docs/Feedback.mdx';
 
 <Meta of={TextInputStories} />
 
 # Text Input
 
-[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/text-input)
-&nbsp;|&nbsp;
-[Usage guidelines](https://www.carbondesignsystem.com/components/text-input/usage)
-&nbsp;|&nbsp;
-[Accessibility](https://www.carbondesignsystem.com/components/text-input/accessibility)
+<ComponentLinks componentName="text-input" />
 
 ## Table of Contents
 
@@ -118,8 +116,4 @@ const isInvalid = computed(() => {
 </template>
 ```
 
-## Feedback
-
-Help us improve this component by providing feedback, asking questions on Slack,
-or updating this file on
-[GitHub](https://github.com/samueljz/carbon-vue-migration/edit/main/src/components/CvTextInput/CvTextInput.mdx).
+<Feedback componentPath="CvTextInput/CvTextInput.mdx" />

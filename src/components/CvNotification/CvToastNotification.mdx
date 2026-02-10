@@ -1,15 +1,13 @@
 import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as ToastNotificationStories from './CvToastNotification.stories';
+import { ComponentLinks } from '../../../docs/ComponentLinks.mdx';
+import { Feedback } from '../../../docs/Feedback.mdx';
 
 <Meta of={ToastNotificationStories} />
 
 # Toast Notification
 
-[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/notification)
-&nbsp;|&nbsp;
-[Usage guidelines](https://www.carbondesignsystem.com/components/notification/usage)
-&nbsp;|&nbsp;
-[Accessibility](https://www.carbondesignsystem.com/components/notification/accessibility)
+<ComponentLinks componentName="notification" />
 
 ## Table of Contents
 
@@ -32,8 +30,4 @@ support the `timeout` prop to automatically close after a specified duration.
 
 <ArgTypes of={ToastNotificationStories} />
 
-## Feedback
-
-Help us improve this component by providing feedback, asking questions on Slack,
-or updating this file on
-[GitHub](https://github.com/samueljz/carbon-vue-migration/edit/main/src/components/CvNotification/CvToastNotification.mdx).
+<Feedback componentPath="CvNotification/CvToastNotification.mdx" />
