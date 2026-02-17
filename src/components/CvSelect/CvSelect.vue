@@ -76,5 +76,6 @@ const handleSelected = (event: CustomEvent) => {
     <slot name="helper-text" slot="helper-text" />
     <slot name="label-text" slot="label-text" />
     <slot />
+    <slot name="slug" />
   </cds-select>
 </template>

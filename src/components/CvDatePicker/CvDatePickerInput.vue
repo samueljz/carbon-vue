@@ -70,5 +70,7 @@ const handleInput = (event: Event) => {
   >
     <slot name="helper-text" slot="helper-text" />
     <slot name="label-text" slot="label-text" />
+    <slot name="ai-label" />
+    <slot name="slug" />
   </cds-date-picker-input>
 </template>

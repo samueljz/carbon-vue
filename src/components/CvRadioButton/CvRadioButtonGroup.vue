@@ -58,5 +58,7 @@ const handleChanged = (event: CustomEvent) => {
     @cds-radio-button-group-changed="handleChanged"
   >
     <slot />
+    <slot name="ai-label" />
+    <slot name="slug" />
   </cds-radio-button-group>
 </template>

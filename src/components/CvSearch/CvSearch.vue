@@ -62,5 +62,6 @@ const handleInput = (event: CustomEvent) => {
     @cds-search-input="handleInput"
   >
     <slot />
+    <slot name="icon" />
   </cds-search>
 </template>

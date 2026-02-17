@@ -92,5 +92,7 @@ const handleInput = (event: CustomEvent) => {
   >
     <slot name="helper-text" slot="helper-text" />
     <slot name="label-text" slot="label-text" />
+    <slot name="ai-label" />
+    <slot name="slug" />
   </cds-number-input>
 </template>

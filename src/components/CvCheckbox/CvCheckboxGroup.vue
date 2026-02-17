@@ -73,5 +73,8 @@ withDefaults(defineProps<CvCheckboxGroupProps>(), {
     :orientation="orientation"
   >
     <slot />
+    <slot name="ai-label" />
+    <slot name="decorator" />
+    <slot name="slug" />
   </cds-checkbox-group>
 </template>
