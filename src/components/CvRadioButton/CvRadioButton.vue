@@ -59,9 +59,5 @@ const emit = defineEmits<{
     :required="props.required || undefined"
     :value="props.value"
     @cds-radio-button-changed="emit('cds-radio-button-changed', $event)"
-  >
-    <slot />
-    <slot name="ai-label" />
-    <slot name="slug" />
-  </cds-radio-button>
+  />
 </template>
