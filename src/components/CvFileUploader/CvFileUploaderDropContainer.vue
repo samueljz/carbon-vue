@@ -23,8 +23,8 @@ const emit = defineEmits<{
 <template>
   <cds-file-uploader-drop-container
     :accept="accept"
-    :disabled="disabled"
-    :multiple="multiple"
+    :disabled="disabled || undefined"
+    :multiple="multiple || undefined"
     :name="name"
     @cds-file-uploader-drop-container-changed="
       emit('cds-file-uploader-drop-container-changed', $event)

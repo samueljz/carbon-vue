@@ -28,7 +28,7 @@ const emit = defineEmits<{
 <template>
   <cds-file-uploader-item
     :icon-description="iconDescription"
-    :invalid="invalid"
+    :invalid="invalid || undefined"
     :size="size"
     :state="state"
     :error-subject="errorSubject"

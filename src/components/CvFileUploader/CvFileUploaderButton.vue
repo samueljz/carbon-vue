@@ -29,8 +29,8 @@ const emit = defineEmits<{
     :button-kind="buttonKind"
     :size="size"
     :accept="accept"
-    :disabled="disabled"
-    :multiple="multiple"
+    :disabled="disabled || undefined"
+    :multiple="multiple || undefined"
     :name="name"
     @cds-file-uploader-button-changed="
       emit('cds-file-uploader-button-changed', $event)

@@ -16,7 +16,7 @@ withDefaults(defineProps<CvFileUploaderProps>(), {
 
 <template>
   <cds-file-uploader
-    :disabled="disabled"
+    :disabled="disabled || undefined"
     :label-description="labelDescription"
     :label-title="labelTitle"
   >
