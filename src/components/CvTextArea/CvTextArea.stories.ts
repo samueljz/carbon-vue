@@ -1,149 +1,149 @@
-import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { CvTextArea } from './index';
 import { CvLayer } from '../CvLayer';
 import '@carbon/web-components/es/components/textarea/textarea-skeleton.js';
 
 const args = {
-    cols: 0,
-    counterMode: 'character' as 'character' | 'word',
-    disabled: false,
-    enableCounter: true,
-    helperText: 'TextArea helper text',
-    hideLabel: false,
-    invalid: false,
-    invalidText: 'Error message that is really long can wrap to more lines but should not be excessively long.',
-    label: 'TextArea label',
-    maxCount: 500,
-    placeholder: '',
-    readonly: false,
-    rows: 4,
-    modelValue: '',
-    warn: false,
-    warnText: 'This is a warning message.',
+  cols: 0,
+  counterMode: 'character' as 'character' | 'word',
+  disabled: false,
+  enableCounter: true,
+  helperText: 'TextArea helper text',
+  hideLabel: false,
+  invalid: false,
+  invalidText: 'Error message that is really long can wrap to more lines but should not be excessively long.',
+  label: 'TextArea label',
+  maxCount: 500,
+  placeholder: '',
+  readonly: false,
+  rows: 4,
+  modelValue: '',
+  warn: false,
+  warnText: 'This is a warning message.',
 };
 
 const argTypes: ArgTypes = {
-    cols: {
-        control: 'number',
-        description: 'Number of columns (cols)',
-    },
-    counterMode: {
-        control: 'radio',
-        options: ['character', 'word'],
-        description: 'Specify the method used for calculating the counter number (character or word)',
-    },
-    disabled: {
-        control: 'boolean',
-        description: 'Disabled (disabled)',
-    },
-    enableCounter: {
-        control: 'boolean',
-        description: 'Enable character counter (enable-counter)',
-    },
-    helperText: {
-        control: 'text',
-        description: 'Helper text (helper-text)',
-    },
-    hideLabel: {
-        control: 'boolean',
-        description: 'Hide label (hide-label)',
-    },
-    invalid: {
-        control: 'boolean',
-        description: 'Invalid (invalid)',
-    },
-    invalidText: {
-        control: 'text',
-        description: 'Invalid text (invalid-text)',
-    },
-    label: {
-        control: 'text',
-        description: 'Label (label)',
-    },
-    maxCount: {
-        control: 'number',
-        description: 'Max character count (max-count)',
-    },
-    placeholder: {
-        control: 'text',
-        description: 'Placeholder text (placeholder)',
-    },
-    readonly: {
-        control: 'boolean',
-        description: 'Read only (readonly)',
-    },
-    rows: {
-        control: 'number',
-        description: 'Number of rows (rows)',
-    },
-    modelValue: {
-        control: 'text',
-        description: 'Value (value)',
-    },
-    warn: {
-        control: 'boolean',
-        description: 'Warn (warn)',
-    },
-    warnText: {
-        control: 'text',
-        description: 'Warn text (warn-text)',
-    },
+  cols: {
+    control: 'number',
+    description: 'Number of columns (cols)',
+  },
+  counterMode: {
+    control: 'radio',
+    options: ['character', 'word'],
+    description: 'Specify the method used for calculating the counter number (character or word)',
+  },
+  disabled: {
+    control: 'boolean',
+    description: 'Disabled (disabled)',
+  },
+  enableCounter: {
+    control: 'boolean',
+    description: 'Enable character counter (enable-counter)',
+  },
+  helperText: {
+    control: 'text',
+    description: 'Helper text (helper-text)',
+  },
+  hideLabel: {
+    control: 'boolean',
+    description: 'Hide label (hide-label)',
+  },
+  invalid: {
+    control: 'boolean',
+    description: 'Invalid (invalid)',
+  },
+  invalidText: {
+    control: 'text',
+    description: 'Invalid text (invalid-text)',
+  },
+  label: {
+    control: 'text',
+    description: 'Label (label)',
+  },
+  maxCount: {
+    control: 'number',
+    description: 'Max character count (max-count)',
+  },
+  placeholder: {
+    control: 'text',
+    description: 'Placeholder text (placeholder)',
+  },
+  readonly: {
+    control: 'boolean',
+    description: 'Read only (readonly)',
+  },
+  rows: {
+    control: 'number',
+    description: 'Number of rows (rows)',
+  },
+  modelValue: {
+    control: 'text',
+    description: 'Value (value)',
+  },
+  warn: {
+    control: 'boolean',
+    description: 'Warn (warn)',
+  },
+  warnText: {
+    control: 'text',
+    description: 'Warn text (warn-text)',
+  },
 };
 
 const meta: Meta<typeof CvTextArea> = {
-    title: 'Components/Text Area',
-    component: CvTextArea,
+  title: 'Components/Text Area',
+  component: CvTextArea,
 };
 
 export default meta;
 type Story = StoryObj<typeof CvTextArea>;
 
 export const Default: Story = {
-    args,
-    argTypes,
-    render: (args) => ({
-        components: { CvTextArea },
-        setup() {
-            return { args };
-        },
-        template: '<CvTextArea v-bind="args" />',
-    }),
+  args,
+  argTypes,
+  render: (args) => ({
+    components: { CvTextArea },
+    setup() {
+      return { args };
+    },
+    template: '<CvTextArea v-bind="args" />',
+  }),
 };
 
 export const Skeleton: Story = {
-    args: {
-        hideLabel: false,
+  args: {
+    hideLabel: false,
+  },
+  argTypes: {
+    hideLabel: {
+      control: 'boolean',
+      description: 'Hide label (hide-label)',
     },
-    argTypes: {
-        hideLabel: {
-            control: 'boolean',
-            description: 'Hide label (hide-label)',
-        },
+  },
+  parameters: {
+    controls: {
+      include: ['hideLabel'],
     },
-    parameters: {
-        controls: {
-            include: ['hideLabel'],
-        },
+  },
+  render: ({ hideLabel }) => ({
+    setup() {
+      return { hideLabel };
     },
-    render: ({ hideLabel }) => ({
-        setup() {
-            return { hideLabel };
-        },
-        template: `<cds-textarea-skeleton :hide-label="hideLabel"></cds-textarea-skeleton>`,
-    }),
+    template: `<cds-textarea-skeleton :hide-label="hideLabel"></cds-textarea-skeleton>`,
+  }),
 };
 
 export const WithLayer: Story = {
-    args: { ...args, helperText: 'Optional helper text', enableCounter: false },
-    argTypes,
-    render: (args) => ({
-        components: { CvTextArea, CvLayer },
-        setup() {
-            const value = ref('');
-            return { args, value };
-        },
-        template: `
+  args: { ...args, helperText: 'Optional helper text', enableCounter: false },
+  argTypes,
+  render: (args) => ({
+    components: { CvTextArea, CvLayer },
+    setup() {
+      const value = ref('');
+      return { args, value };
+    },
+    template: `
       <CvLayer with-background>
         <div class="cds--with-layer">
           <div class="cds--with-layer__background">
@@ -186,5 +186,5 @@ export const WithLayer: Story = {
         </div>
       </CvLayer>
     `,
-    }),
+  }),
 };

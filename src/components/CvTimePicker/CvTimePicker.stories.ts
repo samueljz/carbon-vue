@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3-vite';
 import { CvTimePicker, CvTimePickerSelect } from './index';
 import CvSelectItem from '../CvSelect/CvSelectItem.vue';
 

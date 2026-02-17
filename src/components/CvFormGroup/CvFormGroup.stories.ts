@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import '@carbon/web-components/es/components/stack/index.js';
 import '@carbon/web-components/es/components/form/index.js';
 import { CvFormGroup } from './index';
@@ -6,44 +6,40 @@ import { CvTextInput } from '../CvTextInput';
 import { CvButton } from '../CvButton';
 import { CvRadioButtonGroup, CvRadioButton } from '../CvRadioButton';
 
-const args = {
-  invalid: false,
-  legendText: 'FormGroup Legend',
-  message: false,
-  messageText: '',
-};
-
-const argTypes = {
-  invalid: {
-    control: 'boolean',
-    description: 'Specify whether the Form Group is invalid',
-  },
-  legendText: {
-    control: 'text',
-    description: 'Provide the text to be rendered inside of the fieldset.',
-  },
-  message: {
-    control: 'boolean',
-    description:
-      'Specify whether the message should be displayed in the form group.',
-  },
-  messageText: {
-    control: 'text',
-    description: 'Provide the text for the message in the form group.',
-  },
-};
-
 const meta: Meta<typeof CvFormGroup> = {
   title: 'Components/Form Group',
   component: CvFormGroup,
+  argTypes: {
+    invalid: {
+      control: 'boolean',
+      description: 'Specify whether the Form Group is invalid',
+    },
+    legendText: {
+      control: 'text',
+      description: 'Provide the text to be rendered inside of the fieldset.',
+    },
+    message: {
+      control: 'boolean',
+      description:
+        'Specify whether the message should be displayed in the form group.',
+    },
+    messageText: {
+      control: 'text',
+      description: 'Provide the text for the message in the form group.',
+    },
+  },
+  args: {
+    invalid: false,
+    legendText: 'FormGroup Legend',
+    message: false,
+    messageText: '',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof CvFormGroup>;
 
 export const Default: Story = {
-  args,
-  argTypes,
   render: (args) => ({
     components: { CvFormGroup, CvTextInput, CvButton, CvRadioButtonGroup, CvRadioButton },
     setup() {

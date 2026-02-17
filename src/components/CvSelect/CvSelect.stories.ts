@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3-vite';
 import { CvSelect, CvSelectItem, CvSelectItemGroup } from './index';
 
 const args = {

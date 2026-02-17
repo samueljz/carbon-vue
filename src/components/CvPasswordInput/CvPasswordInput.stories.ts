@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import type { ArgTypesConfig } from '../../types/storybook';
 import { CvPasswordInput } from './index';
 
 
@@ -30,7 +31,7 @@ const args = {
         'Warning message that is really long can wrap to more lines but should not be excessively long.',
 };
 
-const argTypes = {
+const argTypes: ArgTypesConfig = {
     disabled: {
         control: 'boolean',
         description: 'Specify whether the control is disabled',
@@ -118,17 +119,19 @@ const argTypes = {
     onToggle: {},
 };
 
-const meta: Meta<typeof CvPasswordInput> = {
+const meta: Omit<Meta<typeof CvPasswordInput>, 'argTypes'> & {
+    argTypes: ArgTypesConfig;
+} = {
     title: 'Components/Password Input',
     component: CvPasswordInput,
+    argTypes: argTypes,
+    args,
 };
 
 export default meta;
 type Story = StoryObj<typeof CvPasswordInput>;
 
 export const Default: Story = {
-    args,
-    argTypes,
     render: (args) => ({
         components: { CvPasswordInput },
         setup() {

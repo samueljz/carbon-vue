@@ -311,10 +311,10 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
 | Date Picker | ✅ | ✅ | ✅ | `cds-date-picker` (complex) |
 | Time Picker | ✅ | ✅ | ✅ | `cds-time-picker` |
 | Search | ✅ | ✅ | ✅ | `cds-search` |
-| Password Input | ⬜ | ⬜ | ⬜ | `cds-password-input` |
-| File Uploader | ⬜ | ⬜ | ⬜ | `cds-file-uploader` (complex) |
-| Slider | ⬜ | ⬜ | ⬜ | `cds-slider`, `cds-slider-input` |
-| Form Group | ⬜ | ⬜ | ⬜ | `cds-form-group` |
+| Password Input | ✅ | ✅ | ✅ | `cds-password-input` |
+| File Uploader | ✅ | ✅ | ✅ | `cds-file-uploader` (complex) |
+| Slider | ✅ | ✅ | ✅ | `cds-slider`, `cds-slider-input` |
+| Form Group | ✅ | ✅ | ✅ | `cds-form-group` |
 
 ---
 

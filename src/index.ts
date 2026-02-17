@@ -34,5 +34,19 @@ export { default as CvCheckboxSkeleton } from './components/CvCheckbox/CvCheckbo
 export { default as CvTextInput } from './components/CvTextInput/CvTextInput.vue';
 export { default as CvTextInputSkeleton } from './components/CvTextInput/CvTextInputSkeleton.vue';
 
+export { default as CvPasswordInput } from './components/CvPasswordInput/CvPasswordInput.vue';
+
+export { default as CvFileUploader } from './components/CvFileUploader/CvFileUploader.vue';
+export { default as CvFileUploaderButton } from './components/CvFileUploader/CvFileUploaderButton.vue';
+export { default as CvFileUploaderDropContainer } from './components/CvFileUploader/CvFileUploaderDropContainer.vue';
+export { default as CvFileUploaderItem } from './components/CvFileUploader/CvFileUploaderItem.vue';
+export { default as CvFileUploaderSkeleton } from './components/CvFileUploader/CvFileUploaderSkeleton.vue';
+
+export { default as CvSlider } from './components/CvSlider/CvSlider.vue';
+export { default as CvSliderSkeleton } from './components/CvSlider/CvSliderSkeleton.vue';
+
+export { default as CvFormGroup } from './components/CvFormGroup/CvFormGroup.vue';
+
+
 // Types
 export * from './types';

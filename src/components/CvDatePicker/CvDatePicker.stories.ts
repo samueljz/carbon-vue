@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3';
+import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3-vite';
 import { CvDatePicker, CvDatePickerInput, type DatePickerInputKind } from './index';
 import type { CvDatePickerProps } from './CvDatePicker.vue';
 import type { CvDatePickerInputProps } from './CvDatePickerInput.vue';
