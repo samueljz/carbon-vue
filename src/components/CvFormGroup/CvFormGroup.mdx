@@ -1,15 +1,19 @@
 import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as CvFormGroupStories from './CvFormGroup.stories';
+import { ComponentLinks } from '../../../docs/ComponentLinks.mdx';
+import { Feedback } from '../../../docs/Feedback.mdx';
 
 <Meta of={CvFormGroupStories} />
 
-# FormGroup
+# Form group
 
-[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/form-group)
-&nbsp;|&nbsp;
-[Usage guidelines](https://www.carbondesignsystem.com/components/form-group/usage)
-&nbsp;|&nbsp;
-[Accessibility](https://www.carbondesignsystem.com/components/form-group/accessibility)
+<ComponentLinks componentName="form-group" />
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Component API](#component-api)
+- [Feedback](#feedback)
 
 ## Overview
 
@@ -21,7 +25,4 @@ FormGroup is a wrapper for a collection of form elements. It can be used to grou
 
 <ArgTypes of={CvFormGroupStories} />
 
-## Feedback
-
-Help us improve this component by providing feedback on
-[GitHub](https://github.com/nicholaslee119/carbon-vue).
+<Feedback componentPath="CvFormGroup/CvFormGroup.mdx" />

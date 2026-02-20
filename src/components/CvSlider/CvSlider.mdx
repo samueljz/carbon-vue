@@ -1,15 +1,26 @@
 import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
 import * as CvSliderStories from './CvSlider.stories';
+import { ComponentLinks } from '../../../docs/ComponentLinks.mdx';
+import { Feedback } from '../../../docs/Feedback.mdx';
 
 <Meta of={CvSliderStories} />
 
 # Slider
 
-[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/slider)
-&nbsp;|&nbsp;
-[Usage guidelines](https://www.carbondesignsystem.com/components/slider/usage)
-&nbsp;|&nbsp;
-[Accessibility](https://www.carbondesignsystem.com/components/slider/accessibility)
+<ComponentLinks componentName="slider" />
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Controlled Slider](#controlled-slider)
+- [Skeleton](#skeleton)
+- [Slider With Custom Value Label](#slider-with-custom-value-label)
+- [Slider With Hidden Inputs](#slider-with-hidden-inputs)
+- [Two Handle Skeleton](#two-handle-skeleton)
+- [Two Handle Slider](#two-handle-slider)
+- [Two Handle Slider With Hidden Inputs](#two-handle-slider-with-hidden-inputs)
+- [Component API](#component-api)
+- [Feedback](#feedback)
 
 ## Overview
 
@@ -17,15 +28,36 @@ Sliders provide a visual indication of adjustable content, where the user can mo
 
 <Canvas of={CvSliderStories.Default} />
 
+## Controlled Slider
+
+<Canvas of={CvSliderStories.ControlledSlider} />
+
+## Skeleton
+
+<Canvas of={CvSliderStories.Skeleton} />
+
+## Slider With Custom Value Label
+
+<Canvas of={CvSliderStories.SliderWithCustomValueLabel} />
+
+## Slider With Hidden Inputs
+
+<Canvas of={CvSliderStories.SliderWithHiddenInputs} />
+
+## Two Handle Skeleton
+
+<Canvas of={CvSliderStories.TwoHandleSkeleton} />
+
 ## Two Handle Slider
 
 <Canvas of={CvSliderStories.TwoHandleSlider} />
+
+## Two Handle Slider With Hidden Inputs
+
+<Canvas of={CvSliderStories.TwoHandleSliderWithHiddenInputs} />
 
 ## Component API
 
 <ArgTypes of={CvSliderStories} />
 
-## Feedback
-
-Help us improve this component by providing feedback on
-[GitHub](https://github.com/nicholaslee119/carbon-vue).
+<Feedback componentPath="CvSlider/CvSlider.mdx" />

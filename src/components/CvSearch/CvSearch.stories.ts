@@ -30,9 +30,8 @@ const argTypes: ArgTypes = {
 };
 
 const meta: Meta<typeof CvSearch> = {
-  title: 'Components/CvSearch',
+  title: 'Components/Search',
   component: CvSearch,
-  tags: ['autodocs'],
   argTypes,
 };
 
