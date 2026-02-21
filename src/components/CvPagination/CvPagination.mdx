@@ -1,0 +1,37 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as PaginationStories from './CvPagination.stories';
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/pagination)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/pagination/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/pagination/accessibility)
+
+## Overview
+
+<Canvas of={PaginationStories.Default} />
+
+## Multiple pagination components
+
+<Canvas of={PaginationStories.MultiplePaginationComponents} />
+
+## Pagination unknown pages
+
+<Canvas of={PaginationStories.PaginationUnknownPages} />
+
+## Pagination with custom page sizes label
+
+<Canvas of={PaginationStories.PaginationWithCustomPageSizesLabel} />
+
+## Component API
+
+<ArgTypes of={PaginationStories.Default} />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).

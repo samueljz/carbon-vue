@@ -1,0 +1,39 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as TabsStories from './CvTabs.stories';
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/tabs)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/tabs/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/tabs/accessibility)
+
+## Overview
+
+Use tabs to allow users to navigate easily between views within the same
+context. `cds-tabs` are now more composable, meaning that you have more
+flexibility in what is in rendered inside of `cds-tab` and a tab's panel.
+
+### Line Tabs
+
+<Canvas of={TabsStories.Default} />
+
+### Contained Tabs
+
+<Canvas of={TabsStories.Contained} />
+
+### Skeleton
+
+<Canvas of={TabsStories.Skeleton} />
+
+## Component API
+
+<ArgTypes of={TabsStories.Default} />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).

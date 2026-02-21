@@ -1,0 +1,75 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as BreadcrumbStories from './CvBreadcrumb.stories';
+
+<Meta of={BreadcrumbStories} />
+
+# Breadcrumb
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/breadcrumb)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/breadcrumb/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/breadcrumb/accessibility)
+
+## Overview
+
+You can build a breadcrumb using a combination of the `CvBreadcrumb` and
+`CvBreadcrumbItem` components. The `CvBreadcrumb` component accepts a list of
+`CvBreadcrumbItem` components as children and each `CvBreadcrumbItem` is
+responsible for displaying the page links in the hierarchy.
+
+<Canvas of={BreadcrumbStories.Default} />
+
+## Breadcrumb with `overflow-menu`
+
+When space becomes limited, use an `overflow-menu` to truncate the breadcrumbs.
+The first and last two page links should be shown, but the remaining breadcrumbs
+in between are condensed into an overflow menu. Breadcrumbs should never wrap
+onto a second line.
+
+<Canvas of={BreadcrumbStories.BreadcrumbWithOverflowMenu} />
+
+## Skeleton state
+
+You can use the `breadcrumb-skeleton` component to render a skeleton variant of
+a breadcrumb. This is useful to display while content in your breadcrumb is
+being fetched from an external resource like an API.
+
+<Canvas of={BreadcrumbStories.Skeleton} />
+
+## Component API
+
+<ArgTypes of={BreadcrumbStories.Default} />
+
+### Breadcrumb no-trailing-slash
+
+You can use the `noTrailingSlash` attribute to omit the slash from the end of
+the current page.
+
+```html
+<CvBreadcrumb no-trailing-slash>
+  <CvBreadcrumbItem><cds-breadcrumb-link href="#">Breadcrumb 1</cds-breadcrumb-link></CvBreadcrumbItem>
+  <CvBreadcrumbItem><cds-breadcrumb-link href="#">Breadcrumb 2</cds-breadcrumb-link></CvBreadcrumbItem>
+  <CvBreadcrumbItem><cds-breadcrumb-link href="#">Breadcrumb 3</cds-breadcrumb-link></CvBreadcrumbItem>
+</CvBreadcrumb>
+```
+
+### BreadcrumbItem `is-currentpage`
+
+You can use the `is-currentpage` attribute on a `breadcrumb-link` to represent
+the current page.
+
+```html
+<CvBreadcrumb>
+  <CvBreadcrumbItem><cds-breadcrumb-link href="#">Breadcrumb 1</cds-breadcrumb-link></CvBreadcrumbItem>
+  <CvBreadcrumbItem><cds-breadcrumb-link href="#">Breadcrumb 2</cds-breadcrumb-link></CvBreadcrumbItem>
+  <CvBreadcrumbItem>
+    <cds-breadcrumb-link is-currentpage>Breadcrumb 3</cds-breadcrumb-link>
+  </CvBreadcrumbItem>
+</CvBreadcrumb>
+```
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).

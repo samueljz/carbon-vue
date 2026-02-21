@@ -1,0 +1,52 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as TreeViewStories from './CvTreeView.stories';
+
+<Meta of={TreeViewStories} />
+
+# Tree View
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/tree-view)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/tree-view/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/tree-view/accessibility)
+
+## Overview
+
+TreeView is a component that allows users to navigate through a hierarchy of
+items. It is used to display nested lists of items that can be expanded or
+collapsed to show and hide additional items.
+
+<Canvas of={TreeViewStories.Default} />
+
+## With Controlled Expansion
+
+The `is-expanded` attribute can be used to determine if an individual tree node is
+expanded or collapsed.
+
+<Canvas of={TreeViewStories.withControlledExpansion} />
+
+## With Icons
+
+The icon `slot` can be used to customize the icons of each tree node.
+
+<Canvas of={TreeViewStories.withIcons} />
+
+## With Links
+
+The `href` attribute can be used with click handling on each of the tree nodes.
+
+<Canvas of={TreeViewStories.withLinks} />
+
+## Component API
+
+## \`CvTreeView\`
+<ArgTypes of="cds-tree-view" />
+
+## \`CvTreeNode\`
+<ArgTypes of="cds-tree-node" />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).
