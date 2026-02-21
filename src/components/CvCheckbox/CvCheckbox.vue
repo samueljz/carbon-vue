@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import '@carbon/web-components/es/components/checkbox/index.js';
-import { ref, onUpdated, onMounted } from 'vue';
+
 
 export interface CvCheckboxProps {
   /**
@@ -72,28 +72,8 @@ const emit = defineEmits<{
   change: [event: CustomEvent];
 }>();
 
-const checkboxRef = ref<HTMLElement | null>(null);
 
-const updateAttributes = () => {
-  if (checkboxRef.value) {
-    // Set invalid attribute
-    if (props.invalid) {
-      checkboxRef.value.setAttribute('invalid', '');
-    } else {
-      checkboxRef.value.removeAttribute('invalid');
-    }
-    
-    // Set warn attribute
-    if (props.warn) {
-      checkboxRef.value.setAttribute('warn', '');
-    } else {
-      checkboxRef.value.removeAttribute('warn');
-    }
-  }
-};
 
-onMounted(updateAttributes);
-onUpdated(updateAttributes);
 
 const handleChange = (event: CustomEvent) => {
   const target = event.target as HTMLInputElement;
@@ -104,7 +84,6 @@ const handleChange = (event: CustomEvent) => {
 
 <template>
   <cds-checkbox
-    ref="checkboxRef"
     :checked="modelValue || undefined"
     :indeterminate="indeterminate || undefined"
     :label-text="labelText"
@@ -113,10 +92,10 @@ const handleChange = (event: CustomEvent) => {
     :name="name"
     :value="value"
     :readonly="readOnly || undefined"
-    :invalid="invalid || undefined"
+    :invalid.attr="invalid || undefined"
     :invalid-text="invalidText"
     :helper-text="helperText"
-    :warn="warn || undefined"
+    :warn.attr="warn || undefined"
     :warn-text="warnText"
     @cds-checkbox-changed="handleChange"
   >
