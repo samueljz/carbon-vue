@@ -43,23 +43,25 @@ invalid = false;
 
 | Scenario | Web Component Definition | Vue Template | Result |
 |----------|-------------------------|--------------|--------|
-| **With reflect** | `@property({ type: Boolean, reflect: true })` | `:disabled="true"` | ✅ Sets property AND attribute |
-| **Without reflect** | `@property({ type: Boolean })` | `:invalid="true"` | ⚠️ Sets property only, NO attribute |
-| **Without reflect** | `@property({ type: Boolean })` | `invalid` (no colon) | ✅ Sets attribute (and property via attribute) |
+| **With reflect** | `@property({ type: Boolean, reflect: true })` | `:disabled="isDisabled"` | ✅ Sets property AND attribute |
+| **Without reflect** | `@property({ type: Boolean })` | `:invalid="isInvalid"` | ⚠️ Sets property only, NO attribute |
+| **Force Attribute** | `@property({ type: Boolean })` | `:invalid.attr="isInvalid \|\| undefined"` | ✅ Forces attribute to DOM via Vue |
 
-### When to Use Attribute Binding (No Colon)
+### When to Use Attribute Binding (`.attr`)
 
-If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, you MUST ensure the attribute is in the DOM:
+If the web component uses CSS attribute selectors like `[invalid]`, `[warn]`, `[href]`, you MUST ensure the HTML attribute is present in the DOM:
 
 ```vue
-<!-- ❌ WRONG - Only sets property, CSS won't work -->
-<CvCheckbox :invalid="true" invalid-text="Error">
+<!-- ❌ WRONG - Only sets DOM property, CSS [invalid] won't apply -->
+<CvCheckbox :invalid="isInvalid">
 
-<!-- ✅ CORRECT - Sets attribute in DOM -->
-<CvCheckbox invalid invalid-text="Error">
+<!-- ❌ HACKY - Using onMounted lifehooks to manually setAttribute -->
+
+<!-- ✅ CORRECT - Forces Vue to bind as an HTML attribute. Use `|| undefined` to cleanly remove the attribute when false! -->
+<CvCheckbox :invalid.attr="isInvalid || undefined">
 ```
 
-### How to Check if You Need Attribute Binding
+### How to Check if You Need `.attr` Attribute Binding
 
 1. **Check the web component source** for `@property()` decorator:
    ```typescript
@@ -74,7 +76,7 @@ If the web component uses CSS attribute selectors like `[invalid]` or `[warn]`, 
    }
    ```
 
-3. **If both conditions are true**, use attribute binding (no colon) in stories for boolean `true` values
+3. **If both conditions are true**, use the `.attr` modifier in your Vue templates.
 
 ### Known Components Requiring Attribute Binding
 
