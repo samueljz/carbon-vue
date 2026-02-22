@@ -1,0 +1,40 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as StackStories from './CvStack.stories';
+
+<Meta of={StackStories} />
+
+# Stack
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/stack)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/stack/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/stack/accessibility)
+
+## Overview
+
+The Stack component is a useful layout utility in a component-based model. This
+allows components to not use margin and instead delegate the responsibility of
+positioning and layout to parent components.
+
+In the case of the Stack component, it uses the spacing scale from the Design
+Language in order to determine how much space there should be between items
+rendered by the Stack component. It also supports a custom gap prop which will
+allow a user to provide a custom value for the gap of the layout.
+
+This component supports both horizontal and vertical orientations.
+
+<Canvas of={StackStories.Default} />
+
+## Horizontal
+
+<Canvas of={StackStories.Horizontal} />
+
+## Component API
+
+<ArgTypes of={StackStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).

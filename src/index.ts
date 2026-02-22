@@ -47,6 +47,34 @@ export { default as CvSliderSkeleton } from './components/CvSlider/CvSliderSkele
 
 export { default as CvFormGroup } from './components/CvFormGroup/CvFormGroup.vue';
 
+// UI Shell & Layout
+export { default as CvGrid } from './components/CvGrid/CvGrid.vue';
+export { default as CvColumn } from './components/CvColumn/CvColumn.vue';
+export { default as CvColumnHang } from './components/CvColumnHang/CvColumnHang.vue';
+
+export { default as CvStack } from './components/CvStack/CvStack.vue';
+
+export { default as CvHeader } from './components/CvHeader/CvHeader.vue';
+export { default as CvHeaderName } from './components/CvHeaderName/CvHeaderName.vue';
+export { default as CvHeaderNav } from './components/CvHeaderNav/CvHeaderNav.vue';
+export { default as CvHeaderNavItem } from './components/CvHeaderNavItem/CvHeaderNavItem.vue';
+export { default as CvHeaderMenu } from './components/CvHeaderMenu/CvHeaderMenu.vue';
+export { default as CvHeaderMenuItem } from './components/CvHeaderMenuItem/CvHeaderMenuItem.vue';
+export { default as CvHeaderMenuButton } from './components/CvHeaderMenuButton/CvHeaderMenuButton.vue';
+export { default as CvHeaderGlobalAction } from './components/CvHeaderGlobalAction/CvHeaderGlobalAction.vue';
+export { default as CvHeaderPanel } from './components/CvHeaderPanel/CvHeaderPanel.vue';
+export { default as CvHeaderSideNavItems } from './components/CvHeaderSideNavItems/CvHeaderSideNavItems.vue';
+
+export { default as CvSwitcher } from './components/CvSwitcher/CvSwitcher.vue';
+export { default as CvSwitcherItem } from './components/CvSwitcherItem/CvSwitcherItem.vue';
+export { default as CvSwitcherDivider } from './components/CvSwitcherDivider/CvSwitcherDivider.vue';
+
+export { default as CvSideNav } from './components/CvSideNav/CvSideNav.vue';
+export { default as CvSideNavItems } from './components/CvSideNavItems/CvSideNavItems.vue';
+export { default as CvSideNavLink } from './components/CvSideNavLink/CvSideNavLink.vue';
+export { default as CvSideNavDivider } from './components/CvSideNavDivider/CvSideNavDivider.vue';
+export { default as CvSideNavMenu } from './components/CvSideNavMenu/CvSideNavMenu.vue';
+export { default as CvSideNavMenuItem } from './components/CvSideNavMenuItem/CvSideNavMenuItem.vue';
 
 // Types
 export * from './types';

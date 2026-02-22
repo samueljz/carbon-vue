@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlots, cloneVNode } from 'vue';
 import '@carbon/web-components/es/components/button/index.js';
 import type { ButtonKind, ButtonSize, ButtonType, ButtonTooltipAlignment, TooltipPosition } from '@/types';
 
@@ -69,25 +70,39 @@ const handleClick = (event: MouseEvent) => {
     emit('click', event);
   }
 };
+
+const slots = useSlots();
+const IconSlot = () => {
+  if (slots.icon) {
+    return slots.icon().map(vnode => cloneVNode(vnode, { slot: 'icon' }));
+  }
+  return null;
+};
+const BadgeIndicatorSlot = () => {
+  if (slots['badge-indicator']) {
+    return slots['badge-indicator']().map(vnode => cloneVNode(vnode, { slot: 'badge-indicator' }));
+  }
+  return null;
+};
 </script>
 
 <template>
   <cds-button
-    :kind="kind"
-    :size="size"
-    :disabled="disabled || undefined"
     :href="href"
     :type="type"
-    :isExpressive="isExpressive || undefined"
-    :isSelected="isSelected || undefined"
-    :tooltip-text="tooltipText"
-    :tooltip-position="tooltipPosition"
-    :tooltip-alignment="tooltipAlignment"
+    :size="size"
+    :kind="kind"
+    :is-expressive="isExpressive ? true : undefined"
+    :is-selected="isSelected ? true : undefined"
     :danger-description="dangerDescription"
+    :tooltip-text="tooltipText"
+    :tooltip-alignment="tooltipAlignment"
+    :tooltip-position="tooltipPosition"
+    :disabled="disabled ? true : undefined"
     @click="handleClick"
   >
+    <IconSlot />
+    <BadgeIndicatorSlot />
     <slot />
-    <slot name="icon" />
-    <slot name="badge-indicator" />
   </cds-button>
 </template>

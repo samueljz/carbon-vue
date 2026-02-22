@@ -11,9 +11,15 @@ import './_container.scss';
 import './templates/with-layer.scss';
 
 // Configure Vue to recognize custom elements
+import { Search20, Notification20, Switcher20 } from '@carbon/icons-vue';
+
 setup((app) => {
     app.config.compilerOptions.isCustomElement = (tag) =>
         tag.startsWith('cds-');
+
+    app.component('Search20', Search20);
+    app.component('Notification20', Notification20);
+    app.component('AppSwitcher20', Switcher20);
 });
 
 export const globalTypes: Preview['globalTypes'] = {
