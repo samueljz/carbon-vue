@@ -160,7 +160,7 @@ export const IconButton: Story = {
         template: `
       <CvButton v-bind="args" tooltip-text="Icon Description">
         <template #icon>
-          <Add16 slot="icon" />
+          <Add16 />
         </template>
       </CvButton>
     `,
