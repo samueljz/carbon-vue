@@ -29,7 +29,7 @@ withDefaults(defineProps<CvStackProps>(), {
   <cds-stack
     :orientation="orientation"
     :gap="gap"
-    :use-custom-gap-value="useCustomGapValue"
+    :use-custom-gap-value="useCustomGapValue || undefined"
   >
     <slot />
   </cds-stack>

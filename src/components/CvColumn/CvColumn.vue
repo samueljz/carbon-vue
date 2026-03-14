@@ -26,6 +26,11 @@ export interface CvColumnProps {
    * The span of the column at the maximum breakpoint.
    */
   max?: number | string;
+
+  /**
+   * Specify constant column span, start, or end values that will not change based on breakpoint
+   */
+  span?: number | string;
 }
 
 withDefaults(defineProps<CvColumnProps>(), {});
@@ -38,6 +43,7 @@ withDefaults(defineProps<CvColumnProps>(), {});
     :lg="lg"
     :xlg="xlg"
     :max="max"
+    :span="span"
   >
     <slot />
   </cds-column>
