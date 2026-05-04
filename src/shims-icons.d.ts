@@ -6,3 +6,9 @@ declare module '@carbon/icons-vue' {
     // Add other icons as needed, or use a wildcard if possible:
     // export const [key: string]: DefineComponent;
 }
+
+declare module '@carbon/icons-vue/es/*' {
+    import { DefineComponent } from 'vue';
+    const component: DefineComponent<{}, {}, any>;
+    export default component;
+}

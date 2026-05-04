@@ -1,0 +1,41 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as CodeSnippetStories from './CvCodeSnippet.stories';
+
+<Meta of={CodeSnippetStories} />
+
+# Code snippet
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/code-snippet)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/code-snippet/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/code-snippet/accessibility)
+
+## Overview
+
+Code snippets are small blocks of reusable code that can be inserted in a code file.
+
+## Inline
+
+<Canvas of={CodeSnippetStories.Inline} />
+
+## Multiline
+
+<Canvas of={CodeSnippetStories.Multiline} />
+
+## Singleline
+
+<Canvas of={CodeSnippetStories.Singleline} />
+
+## Skeleton
+
+<Canvas of={CodeSnippetStories.Skeleton} />
+
+## Component API
+
+<ArgTypes of={CodeSnippetStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).
