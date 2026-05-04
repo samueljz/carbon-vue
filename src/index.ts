@@ -50,3 +50,21 @@ export { default as CvFormGroup } from './components/CvFormGroup/CvFormGroup.vue
 
 // Types
 export * from './types';
+
+// Data Table
+export * from './components/CvDataTable';
+
+// Structured List
+export * from './components/CvStructuredList';
+
+// List
+export * from './components/CvList';
+
+// Contained List
+export * from './components/CvContainedList';
+
+// Tile
+export * from './components/CvTile';
+
+// Code Snippet
+export * from './components/CvCodeSnippet';

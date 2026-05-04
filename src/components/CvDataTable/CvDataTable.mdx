@@ -1,0 +1,58 @@
+import { ArgTypes, Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as DataTableStories from './CvDataTableBasic.stories';
+
+<Meta of={DataTableStories} />
+
+# DataTable
+
+[Source code](https://github.com/carbon-design-system/carbon/tree/main/packages/web-components/src/components/data-table)
+&nbsp;|&nbsp;
+[Usage guidelines](https://www.carbondesignsystem.com/components/data-table/usage)
+&nbsp;|&nbsp;
+[Accessibility](https://www.carbondesignsystem.com/components/data-table/accessibility)
+
+## Overview
+
+You can implement a data table in your project by importing the `CvDataTable`
+component and using it along with any additional table components that you need.
+
+The data table component needs two additional components to be provided:
+`CvTableRow` and `CvTableHead`. The `CvTableRow` component is the data
+you would like to display in the rows of your table, whereas `CvTableHead`
+specifies which table column headings should be displayed.
+
+```html
+<CvDataTable>
+  <CvTableHead>
+    <CvTableHeaderRow>
+      <CvTableHeaderCell>Name</CvTableHeaderCell>
+      <CvTableHeaderCell>Status</CvTableHeaderCell>
+    </CvTableHeaderRow>
+  </CvTableHead>
+  <CvTableBody>
+    <CvTableRow>
+      <CvTableCell>Load Balancer 1</CvTableCell>
+      <CvTableCell>Disabled</CvTableCell>
+    </CvTableRow>
+    <CvTableRow>
+      <CvTableCell>Load Balancer 2</CvTableCell>
+      <CvTableCell>Starting</CvTableCell>
+    </CvTableRow>
+    <CvTableRow>
+      <CvTableCell>Load Balancer 3</CvTableCell>
+      <CvTableCell>Active</CvTableCell>
+    </CvTableRow>
+  </CvTableBody>
+</CvDataTable>
+```
+
+<Canvas of={DataTableStories.Default} />
+
+## Component API
+
+<ArgTypes of={DataTableStories} />
+
+## Feedback
+
+Help us improve this component by providing feedback on
+[GitHub](https://github.com/nicholaslee119/carbon-vue).
